@@ -1,0 +1,26 @@
+# Temporary & debug files
+__pycache__/
+*.pyc
+tools/
+verify.py
+showcase_frames.html
+qrcode_mobile.png
+assets/**/test_*
+assets/**/preview_*
+assets/**/*_temp*
+assets/**/*_raw*
+assets/backgrounds/ground_horizon_composite.png
+assets/backgrounds/underworld_arena_option*
+assets/comic/comic_prologue_panel_3_clean.png
+assets/comic/comic_transition_1_2.png
+assets/ui/apartados_hud_frames_showcase.png
+assets/ui/battle_pedestal.png
+assets/ui/card_frame_action.png
+assets/ui/card_frame_action_solid.png
+assets/ui/enemy_perfect_center.png
+assets/ui/enemy_station_preview.png
+assets/ui/frame_opcao_*
+assets/ui/hud_frames_comparison.png
+assets/ui/hud_frame_cutout.png
+assets/ui/map_icon_chamber_*
+assets/ui/status_icons_preview.png

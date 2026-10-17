@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="iceBase" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e0ffff" />
+      <stop offset="40%" stop-color="#70a1ff" />
+      <stop offset="100%" stop-color="#1e3799" />
+    </linearGradient>
+    <linearGradient id="iceFacet1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#48dbfb" />
+      <stop offset="100%" stop-color="#0abde3" />
+    </linearGradient>
+    <filter id="iceGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#48dbfb" flood-opacity="0.85"/>
+    </filter>
+  </defs>
+  
+  <!-- Outer Dark Inking Border -->
+  <polygon points="24,3 37,13 41,29 24,45 7,29 11,13" fill="#080e1e" stroke="#080e1e" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- Base Crystal Shape -->
+  <polygon points="24,4 36,14 40,28 24,44 8,28 12,14" fill="url(#iceBase)" filter="url(#iceGlow)"/>
+  
+  <!-- Facet Left Upper -->
+  <polygon points="24,4 12,14 24,24" fill="#70a1ff" opacity="0.8"/>
+  
+  <!-- Facet Right Upper (Brilliant Light) -->
+  <polygon points="24,4 36,14 24,24" fill="url(#iceFacet1)"/>
+  
+  <!-- Facet Left Lower -->
+  <polygon points="12,14 8,28 24,44 24,24" fill="#1e3799" opacity="0.9"/>
+  
+  <!-- Facet Right Lower (Translucent Cyan) -->
+  <polygon points="36,14 40,28 24,44 24,24" fill="#0abde3" opacity="0.95"/>
+  
+  <!-- White Glint Highlight Lines -->
+  <line x1="24" y1="4" x2="24" y2="44" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="12" y1="14" x2="36" y2="14" stroke="#ffffff" stroke-width="1.2" opacity="0.8"/>
+  <polygon points="24,4 27,12 24,14 21,12" fill="#ffffff"/>
+  
+  <!-- Orbiting Frost Crystals -->
+  <polygon points="38,8 41,10 39,13 36,11" fill="#e0ffff" stroke="#080e1e" stroke-width="0.8"/>
+  <polygon points="9,36 12,38 10,41 7,39" fill="#48dbfb" stroke="#080e1e" stroke-width="0.8"/>
+</svg>

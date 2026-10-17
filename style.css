@@ -1,0 +1,2916 @@
+/* Estilos Principais — Inferno S/A: A Auditoria de Luiz Beznol */
+:root {
+  --bg-dark: #0a090e;
+  --bg-panel: #14121d;
+  --bg-card: #1f1b2e;
+  --border-gold: #e5b95f;
+  --gold-glow: rgba(229, 185, 95, 0.4);
+  --fire-red: #ff4757;
+  --arcane-blue: #3867d6;
+  --shock-purple: #9b59b6;
+  --frost-cyan: #2bcbba;
+  --text-main: #f5f6fa;
+  --text-muted: #a4b0be;
+  --font-title: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+body {
+  background-color: #050408;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+/* Container que simula tela vertical de smartphone no Desktop e tela cheia no Mobile */
+#mobile-viewport {
+  width: 100vw;
+  max-width: 440px;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 920px;
+  background: radial-gradient(circle at 50% 20%, #201a35 0%, #0c0a14 70%, #050408 100%);
+  border: 2px solid rgba(229, 185, 95, 0.3);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 20px rgba(229, 185, 95, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 500px) {
+  #mobile-viewport {
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+/* Header HUD */
+#run-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: rgba(10, 9, 14, 0.96);
+  border-bottom: 1.5px solid rgba(229, 185, 95, 0.35);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  position: relative;
+  z-index: 100;
+  gap: 8px;
+}
+
+.hud-item.room-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+}
+
+#room-name {
+  font-family: var(--font-title);
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #fffaf0;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 3px #000;
+}
+
+.hud-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-comic-trigger {
+  background: linear-gradient(135deg, rgba(229, 185, 95, 0.35), rgba(40, 30, 60, 0.95));
+  border: 1.5px solid var(--border-gold);
+  border-radius: 6px;
+  color: #fff9e6;
+  font-family: var(--font-title);
+  font-size: 0.64rem;
+  font-weight: 800;
+  padding: 4px 7px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn-comic-trigger:hover, .btn-comic-trigger:active {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, rgba(229, 185, 95, 0.55), rgba(60, 45, 90, 0.98));
+  box-shadow: 0 0 10px rgba(229, 185, 95, 0.6);
+}
+
+.soul-gold {
+  color: var(--border-gold);
+  font-family: var(--font-title);
+  font-size: 0.74rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.soul-gold small {
+  display: none;
+}
+
+/* Balão de Fala do Luiz Beznol (Posicionado na faixa central livre, sem cobrir o inimigo nem as cartas) */
+.dialogue-bubble {
+  position: absolute;
+  top: 43%;
+  left: 10px;
+  right: 10px;
+  transform: translateY(-50%);
+  background: rgba(16, 12, 26, 0.93);
+  border: 1.5px solid var(--border-gold);
+  border-radius: 10px;
+  padding: 5px 10px;
+  z-index: 45;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85), 0 0 12px rgba(229, 185, 95, 0.25);
+  animation: fadeIn 0.25s ease-out;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.dialogue-speaker-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.dialogue-mini-portrait {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--border-gold);
+  object-fit: cover;
+}
+
+.speaker-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--border-gold);
+  display: block;
+}
+
+
+.dialogue-bubble p {
+  font-size: 0.76rem;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   ARENA DE BATALHA — LAYOUT MOCKUP (4 QUADRANTES)
+   ========================================================================== */
+#battle-arena {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  padding: 4px 8px 6px;
+  background-color: #0d0a14;
+}
+
+/* Cenário de Fundo (Piso Térreo Contínuo + Linha do Horizonte) */
+.arena-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/backgrounds/underworld_arena_ground.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  filter: brightness(0.82) contrast(1.1); /* Escurece sutilmente o fundo para destacar os combatentes */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   QUADRANTES DE BATALHA (LAYOUT INTEGRADO COM CENÁRIO)
+   ========================================================================== */
+
+/* Topo: Status do Inimigo na Esquerda, Sprite de Corpo Inteiro na Direita */
+.top-battle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  z-index: 10;
+  position: relative;
+  gap: 6px;
+  margin-top: 2px; /* Espaçamento compacto que garante visibilidade total da mão e botão END */
+  padding-top: 0;
+}
+
+/* ==========================================================================
+   HUD OFICIAL COM MOLDURA GREGA DE HADES (ADAPTAÇÃO DA ARTE DO USUÁRIO)
+   ========================================================================== */
+.enemy-hud-container {
+  flex: 1;
+  max-width: 200px;
+  width: clamp(170px, 46vw, 200px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+.ornate-hud-frame {
+  width: 100%;
+  aspect-ratio: 710 / 302;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.85));
+}
+
+.ornate-frame-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ornate-overlay-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ornate-nameplate {
+  position: absolute;
+  top: 24%;
+  left: 12%;
+  right: 12%;
+  height: 32%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 3;
+  overflow: hidden;
+  padding: 0 4px;
+}
+
+.ornate-nameplate h3 {
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: #fffaf0;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 4px #000, 0 0 8px rgba(255, 215, 0, 0.6);
+  margin: 0;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.ornate-nameplate .enemy-subname,
+.ornate-nameplate .player-subname {
+  font-size: 0.54rem;
+  color: #e5b95f;
+  margin: 0;
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.ornate-nameplate strong {
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: #fffaf0;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 4px #000, 0 0 8px rgba(255, 215, 0, 0.8);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.ornate-hp-slot {
+  position: absolute;
+  top: 64.5%;
+  left: 12.4%;
+  right: 12.4%;
+  height: 17.5%;
+  background: #08120e;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.enemy-hud-box .ornate-hp-slot {
+  background: #18080a;
+}
+
+.ornate-hp-slot .hp-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #eb3b5a, #ff4757);
+  transition: width 0.35s ease;
+  box-shadow: 0 0 8px rgba(255, 71, 87, 0.7);
+  z-index: 1;
+}
+
+.player-hud-pill .ornate-hp-slot .hp-bar-fill {
+  background: linear-gradient(90deg, #20bf6b, #2ed573);
+  box-shadow: 0 0 8px rgba(46, 213, 115, 0.7);
+}
+
+.ornate-hp-slot .hp-bar-fill::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.ornate-hp-slot .hp-text {
+  font-family: var(--font-title);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px #000, 0 0 5px #000;
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Badges de Status Compactas (Apenas Ícone + Número) */
+.status-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+  position: relative;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 0.62rem;
+  font-weight: 900;
+  cursor: pointer;
+  background: rgba(18, 14, 26, 0.9);
+  border: 1px solid rgba(229, 185, 95, 0.4);
+  color: #fff;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.status-badge:hover, .status-badge:active {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+.status-badge-art {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.9));
+  display: block;
+}
+
+.status-tooltip-art {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
+  display: block;
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+
+.status-badge-val {
+  font-family: var(--font-title);
+  font-weight: 900;
+  color: #ffd700;
+}
+
+/* Tooltip Popover Interativo de Status */
+.status-tooltip-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  max-width: 200px;
+  background: #140f20;
+  border: 1.5px solid #ffd700;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.62rem;
+  color: #fffaf0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.95), 0 0 10px rgba(255, 215, 0, 0.35);
+  z-index: 50;
+  animation: zoomPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.status-tooltip-popover strong {
+  display: block;
+  font-family: var(--font-title);
+  color: #ffd700;
+  margin-bottom: 2px;
+  font-size: 0.68rem;
+}
+
+.status-tooltip-popover p {
+  margin: 0;
+  line-height: 1.25;
+  color: #dfe4ea;
+}
+
+.intent-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(231, 76, 60, 0.25);
+  border: 1px solid #e74c3c;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #ff7675;
+  margin-top: 3px;
+  box-shadow: 0 0 6px rgba(231, 76, 60, 0.3);
+}
+
+/* Superior Direito: Estação de Batalha do Monstro (Plataforma Estilo Pokémon) */
+.enemy-battle-station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 155px;
+  flex-shrink: 0;
+  margin-top: 0;
+  margin-right: 4px;
+  position: relative;
+  z-index: 10;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Halo / Vinheta Traseira para separar o inimigo das cores escuras do fundo */
+.enemy-backlight-aura {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(circle at center, rgba(14, 38, 42, 0.75) 0%, rgba(10, 24, 28, 0.35) 55%, rgba(0, 0, 0, 0) 75%);
+  border-radius: 50%;
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.enemy-fullbody-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -44px; /* Encaixe dos pés milimetricamente no centro do anel rúnico */
+  margin-left: -8px;
+}
+
+.enemy-fullbody-sprite {
+  height: 155px; /* Altura calibrada para garantir encaixe perfeito em 100dvh mobile */
+  width: auto;
+  max-width: 125px;
+  object-fit: contain;
+  /* Rim Light místico e contraste aprimorado para destacar do fundo */
+  filter: drop-shadow(0 0 12px rgba(80, 255, 190, 0.4)) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.95)) brightness(1.06) contrast(1.06);
+  user-select: none;
+  pointer-events: none;
+  transform-origin: bottom center;
+}
+
+.enemy-fullbody-sprite.hidden-sprite {
+  display: none !important;
+}
+
+.enemy-fullbody-sprite.active-enemy-idle {
+  display: block;
+  animation: idleEnemyBreathing 3.8s infinite ease-in-out;
+}
+
+/* Animação Cômica de Ataque do Estagiário (Lançamento de Café Tóxico / Surto de Burnout) */
+@keyframes comicEnemyAttack {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  25% { transform: translateY(-14px) scale(1.06) rotate(-6deg); filter: drop-shadow(0 0 25px #2ed573) brightness(1.28); }
+  50% { transform: translate(-22px, 8px) scale(1.12) rotate(-8deg); filter: drop-shadow(0 0 35px #2ed573) brightness(1.4); }
+  75% { transform: translate(-8px, 3px) scale(1.04) rotate(-3deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+.enemy-fullbody-sprite.active-enemy-attack {
+  display: block;
+  animation: comicEnemyAttack 0.65s cubic-bezier(0.2, 0.85, 0.3, 1.1) forwards;
+}
+
+/* Animação Cômica de Dano do Estagiário (Tropeço e Queda de Papéis) */
+@keyframes comicEnemyHurt {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  15% { transform: translate(26px, -10px) scale(0.91) rotate(13deg); filter: brightness(2) drop-shadow(0 0 24px #ff4757); }
+  35% { transform: translate(16px, 4px) scale(0.94) rotate(7deg); filter: brightness(1.7) drop-shadow(0 0 16px #e74c3c); }
+  55% { transform: translate(22px, -6px) scale(0.92) rotate(11deg); filter: brightness(1.9) drop-shadow(0 0 20px #ff4757); }
+  75% { transform: translate(8px, 2px) scale(0.97) rotate(4deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+.enemy-fullbody-sprite.active-enemy-hurt {
+  display: block;
+  animation: comicEnemyHurt 0.85s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+}
+
+/* Balão Cômico do Inimigo */
+.enemy-comic-callout {
+  position: absolute;
+  top: -26px;
+  right: -10px;
+  background: #2ed573;
+  color: #0b1e16;
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.8), 0 0 14px rgba(46, 213, 115, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  animation: comicCalloutPop 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform-origin: bottom center;
+}
+
+.enemy-comic-callout::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 18px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #fff;
+}
+
+/* Plataforma Pokémon do Monstro */
+.pedestal-container {
+  width: 185px; /* Plataforma maior e proporcional */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Campo Gravitacional com Blur no entorno da plataforma */
+.pedestal-gravitational-field {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 225px;
+  height: 85px;
+  border-radius: 50%;
+  backdrop-filter: blur(6px) brightness(1.2);
+  -webkit-backdrop-filter: blur(6px) brightness(1.2);
+  background: radial-gradient(ellipse at center, rgba(46, 213, 115, 0.2) 0%, rgba(0, 255, 200, 0.08) 50%, rgba(0, 0, 0, 0) 80%);
+  box-shadow: 0 0 25px rgba(0, 255, 170, 0.3), inset 0 0 16px rgba(0, 255, 170, 0.2);
+  pointer-events: none;
+  z-index: 0;
+  animation: gravityDistortion 3.5s infinite ease-in-out;
+}
+
+@keyframes gravityDistortion {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.06, 1.03) rotate(1deg);
+    opacity: 1;
+    box-shadow: 0 0 35px rgba(0, 255, 170, 0.45), inset 0 0 22px rgba(0, 255, 170, 0.3);
+  }
+}
+
+.enemy-battle-pedestal {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Plataforma nítida e detalhada */
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.85));
+  animation: pedestalHover 5s infinite ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.pedestal-contact-shadow {
+  width: 145px;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0) 75%);
+  border-radius: 50%;
+  margin-top: -14px;
+  filter: blur(1.5px);
+  position: relative;
+  z-index: 0;
+}
+
+@keyframes idleEnemyBreathing {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.02); }
+}
+
+@keyframes pedestalHover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Animação Pokémon de Morte / Saída de Cena */
+@keyframes defeatExit {
+  0% { transform: translateY(0) scale(1); opacity: 1; filter: brightness(1); }
+  25% { transform: translateY(-8px) scale(1.04); filter: brightness(2) drop-shadow(0 0 25px red); }
+  100% { transform: translateY(160px) scale(0.6); opacity: 0; filter: brightness(0.2); }
+}
+
+.enemy-battle-station.defeat-exit {
+  animation: defeatExit 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
+
+@keyframes enterBattleStation {
+  0% { transform: translateY(-70px) scale(0.7); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.enemy-battle-station.enter-station {
+  animation: enterBattleStation 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Base: Protagonista na Sacada de Mármore (Esquerda), Ações na Direita */
+.bottom-battle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  flex: 1;
+  gap: 6px;
+  z-index: 10;
+  position: relative;
+  margin-top: auto;
+  margin-bottom: 2px;
+  padding-bottom: max(2px, env(safe-area-inset-bottom, 2px));
+}
+
+/* Inferior Esquerdo: Coluna do Protagonista com Proporções Otimizadas */
+/* Coluna do Protagonista enxuta na base (para não empurrar as cartas) e Moldura Oficial Grega de Hades no topo */
+.player-visual-column {
+  width: 106px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 5;
+  margin-left: -2px;
+}
+
+.player-hud-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 12;
+  width: 172px;
+  max-width: 172px;
+  margin-bottom: 2px;
+}
+
+.player-hud-pill.ornate-hud-frame {
+  width: 172px;
+  aspect-ratio: 710 / 302;
+  position: relative;
+  margin-bottom: 2px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+  border-radius: 4px;
+}
+
+.energy-mini-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.60rem;
+  font-weight: 800;
+  color: #f1c40f;
+  margin-top: 2px;
+  background: rgba(14, 11, 20, 0.9);
+  border: 1px solid rgba(241, 196, 15, 0.5);
+  border-radius: 5px;
+  padding: 1px 5px;
+  box-shadow: 0 0 6px rgba(241, 196, 15, 0.25);
+  white-space: nowrap;
+}
+
+.player-bust-frame {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: relative;
+}
+
+.player-bust-sprite {
+  height: 145px; /* Altura calibrada para encaixar confortavelmente sem estourar o viewport */
+  max-height: 21vh;
+  width: auto;
+  max-width: 115px;
+  object-fit: contain;
+  object-position: bottom left;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.95));
+  user-select: none;
+  pointer-events: none;
+  margin-bottom: -4px;
+  margin-left: -4px;
+  transform-origin: bottom center;
+}
+
+.player-bust-sprite.hidden-sprite {
+  display: none !important;
+}
+
+.player-bust-sprite.active-idle {
+  display: block;
+  animation: idleBreathing 3.5s infinite ease-in-out;
+}
+
+/* Animação Cômica de Ataque Aristocrático (Estalo de dedos + Impulso Ostentador) */
+@keyframes comicAristocratAttack {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: drop-shadow(0 14px 24px rgba(0,0,0,0.95));
+  }
+  25% {
+    /* Avanço presunçoso e ostentador */
+    transform: translate(28px, -18px) scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 25px rgba(241, 196, 15, 0.85)) brightness(1.3);
+  }
+  50% {
+    /* Clímax do estalo de ouro */
+    transform: translate(32px, -20px) scale(1.12) rotate(4deg);
+    filter: drop-shadow(0 0 35px rgba(255, 215, 0, 0.95)) brightness(1.4);
+  }
+  75% {
+    transform: translate(16px, -10px) scale(1.05) rotate(2deg);
+    filter: drop-shadow(0 0 18px rgba(241, 196, 15, 0.6)) brightness(1.15);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: drop-shadow(0 14px 24px rgba(0,0,0,0.95));
+  }
+}
+
+.player-bust-sprite.active-attack {
+  display: block;
+  animation: comicAristocratAttack 0.65s cubic-bezier(0.2, 0.85, 0.3, 1.1) forwards;
+}
+
+/* Animação Cômica de Dano Histérico (Escândalo do Herdeiro e Vinho Voando) */
+@keyframes comicAristocratHurt {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  12% {
+    /* Tranco violento para trás em choque */
+    transform: translate(-34px, 14px) scale(0.9) rotate(-14deg);
+    filter: brightness(2) drop-shadow(0 0 25px #ff4757);
+  }
+  28% {
+    /* Tremor histérico 1 */
+    transform: translate(-24px, 6px) scale(0.93) rotate(-8deg);
+    filter: brightness(1.7) drop-shadow(0 0 18px #e74c3c);
+  }
+  44% {
+    /* Tremor histérico 2 com vinho subindo */
+    transform: translate(-30px, 12px) scale(0.91) rotate(-13deg);
+    filter: brightness(1.9) drop-shadow(0 0 22px #ff4757);
+  }
+  65% {
+    /* Retomando a postura indignado */
+    transform: translate(-14px, 4px) scale(0.96) rotate(-5deg);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: drop-shadow(0 14px 24px rgba(0,0,0,0.95));
+  }
+}
+
+.player-bust-sprite.active-hurt {
+  display: block;
+  animation: comicAristocratHurt 0.85s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
+}
+
+/* Balão Cômico de Grito / Reação Instantânea (Posicionado acima da cabeça sem cobrir o personagem) */
+.comic-callout {
+  position: absolute;
+  top: -30px; /* Acima da cabeça, sem tapar o rosto nem a animação de ataque/dano */
+  left: 20px;
+  background: #ff4757;
+  color: #fff;
+  font-family: var(--font-title);
+  font-size: 0.74rem;
+  font-weight: 900;
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.85), 0 0 16px rgba(255, 71, 87, 0.7);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  animation: comicCalloutPop 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform-origin: bottom center;
+}
+
+.comic-callout::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 22px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #fff;
+}
+
+.comic-callout.attack-callout {
+  background: linear-gradient(135deg, #f1c40f, #e67e22);
+  color: #1a1529;
+  border-color: #ffd700;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.85), 0 0 18px rgba(241, 196, 15, 0.8);
+}
+
+.comic-callout.attack-callout::after {
+  border-top-color: #ffd700;
+}
+
+@keyframes comicCalloutPop {
+  0% { transform: scale(0.2) rotate(-12deg); opacity: 0; }
+  20% { transform: scale(1.15) rotate(-3deg); opacity: 1; }
+  75% { transform: scale(1.02) rotate(0deg); opacity: 1; }
+  100% { transform: scale(0.8) translateY(-25px) rotate(4deg); opacity: 0; }
+}
+
+/* Sombra de Contato no Chão */
+.unit-ground-shadow {
+  width: 85px;
+  height: 14px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 75%);
+  border-radius: 50%;
+  margin-top: -6px;
+}
+
+@keyframes idleBreathing {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.015); }
+}
+
+/* Inferior Direito: Coluna de Ações & Cartas */
+.battle-actions-column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.actions-subfooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+/* Botão Finalizar Turno Compacto Estilo Hades com Arte Ilustrada */
+.btn-end-turn-styled {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 38px;
+  background: url('assets/ui/btn_end_turn.png') center / contain no-repeat;
+  border: none;
+  color: #f1f2f6;
+  cursor: pointer;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.85));
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.15s;
+  user-select: none;
+  padding: 0 8px 0 32px; /* Compensa a ampulheta alada e centraliza 'END' na ardósia */
+}
+
+.btn-end-turn-styled:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 8px rgba(229, 185, 95, 0.6)) brightness(1.15);
+}
+
+.btn-end-turn-styled:active {
+  transform: translateY(1px) scale(0.96);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9)) brightness(0.9);
+}
+
+.btn-turn-icon {
+  display: none; /* A arte ilustrada já possui o emblema em relevo */
+}
+
+.btn-turn-text {
+  font-size: 0.82rem;
+  font-family: var(--font-title);
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #fff9e6;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 4px #000;
+  white-space: nowrap;
+  line-height: 1;
+  margin: 0;
+}
+
+
+
+/* Barras de HP com Moldura Clássica Grega de Bronze e Ouro (Hades Style) */
+.hp-bar-container {
+  width: 100%;
+  height: 17px;
+  background: #08050e;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid #d4af37;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.95), 0 0 8px rgba(212, 175, 55, 0.35);
+}
+
+.hp-bar-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(90deg, #ffd700, transparent);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hp-bar-container::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(270deg, #ffd700, transparent);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hp-bar-fill {
+  height: 100%;
+  background: linear-gradient(180deg, #ff7675 0%, #e74c3c 45%, #851212 100%);
+  border-radius: 2px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 8px rgba(231, 76, 60, 0.6);
+}
+
+.player-hp .hp-bar-fill {
+  background: linear-gradient(180deg, #55efc4 0%, #00b894 45%, #004d34 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 0 8px rgba(46, 213, 115, 0.6);
+}
+
+.hp-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-title);
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  color: #fffaf0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 3px #000;
+  z-index: 4;
+}
+
+/* Moldura do Escudo Égide (Aegis Shield Badge) */
+.shield-badge {
+  background: linear-gradient(135deg, #1e3799, #0c2461);
+  border: 1.5px solid #ffd700;
+  border-radius: 6px;
+  color: #fff9e6;
+  font-family: var(--font-title);
+  font-size: 0.68rem;
+  font-weight: 900;
+  padding: 2px 7px;
+  margin-top: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 0 10px rgba(30, 55, 153, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.3px;
+}
+
+/* Badges de Efeitos de Status */
+.status-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 6px;
+  min-height: 20px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  animation: popIn 0.25s ease-out;
+}
+
+.status-burn { background: rgba(231, 76, 60, 0.3); border: 1px solid #e74c3c; color: #ff7675; }
+.status-shock { background: rgba(155, 89, 182, 0.3); border: 1px solid #9b59b6; color: #e056fd; }
+.status-chill { background: rgba(52, 152, 219, 0.3); border: 1px solid #3498db; color: #70a1ff; }
+.status-bleed { background: rgba(192, 57, 43, 0.4); border: 1px solid #c0392b; color: #ff4757; }
+.status-daze { background: rgba(241, 196, 15, 0.3); border: 1px solid #f1c40f; color: #f1c40f; }
+.status-charm { background: rgba(255, 107, 129, 0.3); border: 1px solid #ff6b81; color: #ff6b81; }
+
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+.tag-blessing { color: #f39c12; }
+.tag-spell { color: #3498db; }
+
+/* Mão de Cartas em Formato de Leque (Hearthstone / Slay the Spire Style — Calibrada para caber 100% na tela mobile) */
+.cards-hand-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  min-height: 120px;
+  max-height: 132px;
+  overflow: visible !important;
+  padding: 10px 10px 4px 2px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Moldura e Frame de Carta Mitológica Oficial em Leque / Hearthstone Arc */
+.game-card {
+  width: 68px;
+  height: 110px;
+  background: #14121d;
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: -23px; /* Sobreposição em leque calibrada para nunca vazar da tela */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.85);
+  transform: translateY(var(--card-y, 0px)) rotate(var(--card-rot, 0deg));
+  transform-origin: 50% 120%; /* Ponto pivô do leque na base da mão */
+  z-index: var(--card-z, 1);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.22s, filter 0.2s;
+  user-select: none;
+  overflow: visible;
+}
+
+.game-card:first-child {
+  margin-left: 0;
+}
+
+/* Overlay Oficial da Moldura de Ouro e Bronze (Hades Style) */
+.card-frame-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 4;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.8));
+}
+
+/* Janela da Arte posicionada atrás da moldura */
+.card-art-container {
+  position: absolute;
+  top: 18.5%;
+  left: 19%;
+  width: 62%;
+  height: 35%;
+  overflow: hidden;
+  z-index: 1;
+  background: #08060d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-art-fallback {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* Selo de Custo na Gema Dourada Superior Esquerda */
+.card-cost {
+  position: absolute;
+  top: 14%;
+  left: 18.75%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 4px #000;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* Placa do Título: Banner Gravado em Ouro no Topo */
+.card-header {
+  position: absolute;
+  top: 13.2%;
+  left: 28%;
+  right: 10%;
+  height: 5.6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.26rem;
+  font-family: var(--font-title);
+  font-weight: 800;
+  color: #fffaf0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 2px #000;
+  z-index: 5;
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: -0.1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+.game-card.is-selected .card-header,
+.game-card.active-touch .card-header,
+.game-card:hover .card-header {
+  font-size: 0.30rem;
+  letter-spacing: 0px;
+}
+
+/* Caixa de Texto: Papiro / Tábua de Pedra Inferior */
+.card-desc {
+  position: absolute;
+  top: 57.5%;
+  left: 18%;
+  right: 18%;
+  bottom: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.34rem;
+  line-height: 1.15;
+  color: #f1f2f6;
+  z-index: 5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
+  overflow: hidden;
+  pointer-events: none;
+  padding: 1px 2px;
+}
+
+/* Fita de Rodapé com o Tipo da Carta */
+.card-type-tag {
+  position: absolute;
+  top: 86.2%;
+  left: 31%;
+  width: 38%;
+  height: 4.8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.32rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffeaa7;
+  z-index: 5;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+
+/* Efeito de Bênção do Olimpo (Âmbar/Fogo) */
+.game-card.blessing-card .card-frame-overlay {
+  filter: drop-shadow(0 0 8px rgba(255, 159, 26, 0.55));
+}
+
+/* Efeito de Fusão Arcana (Ouro Lendário Divino) */
+.game-card.fused-card .card-frame-overlay {
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.85));
+  animation: glowPulse 2s infinite alternate;
+}
+
+/* Indicador de Alvo de Fusão */
+.game-card.fusion-target-highlight {
+  filter: drop-shadow(0 0 16px #00ffcc) brightness(1.2) !important;
+  transform: translateY(-20px) scale(1.18) !important;
+}
+
+/* ZOOM EXPANDIDO AO SELECIONAR / HOVER (Desfaz a curvatura do leque e sobe com visibilidade total) */
+.game-card:hover, 
+.game-card.active-touch,
+.game-card.is-selected {
+  transform: translateY(-72px) scale(1.75) rotate(0deg) !important;
+  filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.98)) drop-shadow(0 0 24px rgba(229, 185, 95, 0.95)) !important;
+  z-index: 9999 !important;
+}
+
+.game-card.is-selected {
+  filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.98)) drop-shadow(0 0 26px rgba(0, 255, 204, 0.95)) !important;
+}
+
+
+.deck-counts {
+  display: flex;
+  gap: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #e5b95f, #b8860b);
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  color: #120e03;
+  font-family: var(--font-body);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(229, 185, 95, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.1s, filter 0.2s;
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+  filter: brightness(0.9);
+}
+
+.btn-primary small {
+  font-size: 0.65rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* Banner e Animação Cinematográfica de Fusão */
+.fusion-banner {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, rgba(42, 28, 5, 0.98) 0%, rgba(14, 10, 20, 0.98) 85%);
+  border: 2px solid #ffd700;
+  border-radius: 18px;
+  padding: 14px 18px;
+  text-align: center;
+  z-index: 250;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.75), 0 0 25px rgba(255, 71, 87, 0.5);
+  animation: fusionCardPop 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 320px;
+}
+
+@keyframes fusionCardPop {
+  0% { transform: translate(-50%, -50%) scale(0.3) rotate(-10deg); opacity: 0; filter: brightness(2.5); }
+  60% { transform: translate(-50%, -50%) scale(1.08) rotate(3deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; filter: brightness(1); }
+}
+
+.fusion-burst-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  border: 4px solid #ffd700;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: burstExpand 0.7s ease-out forwards;
+}
+
+@keyframes burstExpand {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 1; border-width: 6px; }
+  100% { transform: translate(-50%, -50%) scale(2.6); opacity: 0; border-width: 1px; }
+}
+
+.fusion-tag {
+  color: #ffd700;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.fusion-banner h2 {
+  font-family: var(--font-title);
+  color: #fffaf0;
+  font-size: 1.05rem;
+  margin: 3px 0 8px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.fusion-card-showcase {
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fusion-card-frame-wrap {
+  width: 110px;
+  height: 175px;
+  position: relative;
+  border-radius: 8px;
+  background: #14121d;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 215, 0, 0.8);
+  overflow: visible;
+  animation: floatSubtle 2s infinite ease-in-out;
+}
+
+@keyframes floatSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.fusion-showcase-art {
+  position: absolute;
+  top: 18.5%;
+  left: 19%;
+  width: 62%;
+  height: 35%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.fusion-frame-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.8));
+}
+
+.fusion-card-frame-wrap .card-header {
+  font-size: 0.50rem;
+  top: 10.5%;
+  left: 27%;
+  width: 56%;
+  letter-spacing: 0.5px;
+}
+
+.fusion-card-frame-wrap .card-cost {
+  width: 24px;
+  height: 24px;
+  font-size: 0.88rem;
+  top: 13.5%;
+  left: 18%;
+  color: #fff9e6;
+  text-shadow: 0 0 6px #ffd700, 0 1px 3px #000;
+}
+
+.fusion-card-frame-wrap .card-desc {
+  position: absolute;
+  top: 57%;
+  left: 17%;
+  width: 66%;
+  height: 27%;
+  font-size: 0.54rem;
+  line-height: 1.25;
+  color: #fff9e6;
+  text-shadow: 0 1px 2px #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 5;
+}
+
+.fusion-card-frame-wrap .card-type-tag {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  right: 0;
+  font-size: 0.52rem;
+  font-family: var(--font-title);
+  font-weight: 800;
+  color: #ffd700;
+  text-align: center;
+  z-index: 5;
+  letter-spacing: 0.8px;
+  text-shadow: 0 1px 3px #000;
+}
+
+/* Animação de Colisão e Forja Arcana em Mão */
+.game-card.fusion-colliding-source {
+  animation: fusionClashSource 0.45s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  z-index: 9999 !important;
+}
+
+.game-card.fusion-colliding-target {
+  animation: fusionClashTarget 0.45s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+  z-index: 9998 !important;
+}
+
+@keyframes fusionClashSource {
+  0% { transform: translateY(-70px) scale(1.6) rotate(-5deg); filter: drop-shadow(0 0 20px #ffd700); }
+  50% { transform: translateY(-50px) scale(1.8) rotate(15deg); filter: brightness(2) drop-shadow(0 0 35px #ff4757); }
+  100% { transform: translateY(-30px) scale(0.2) rotate(45deg); opacity: 0; }
+}
+
+@keyframes fusionClashTarget {
+  0% { transform: translateY(-70px) scale(1.6) rotate(5deg); filter: drop-shadow(0 0 20px #ffd700); }
+  50% { transform: translateY(-50px) scale(1.8) rotate(-15deg); filter: brightness(2.5) drop-shadow(0 0 40px #ffd700); }
+  100% { transform: translateY(-30px) scale(1.3) rotate(0deg); filter: brightness(3); }
+}
+
+/* Flash de Luz Cósmica durante a Fusão */
+.fusion-screen-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.65) 0%, rgba(255, 71, 87, 0.4) 50%, transparent 80%);
+  pointer-events: none;
+  z-index: 240;
+  animation: flashFade 0.55s ease-out forwards;
+}
+
+@keyframes flashFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Tremor na Arena no Clímax da Forja */
+.arena-shake {
+  animation: arenaQuake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes arenaQuake {
+  10%, 90% { transform: translate3d(-2px, -1px, 0); }
+  20%, 80% { transform: translate3d(3px, 2px, 0); }
+  30%, 50%, 70% { transform: translate3d(-3px, -3px, 0); }
+  40%, 60% { transform: translate3d(3px, 1px, 0); }
+}
+
+/* Modais de Vitória e Derrota */
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 200;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: #151221;
+  border: 2px solid var(--border-gold);
+  border-radius: 18px;
+  padding: 24px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+}
+
+.room-victory-tag {
+  color: #2ed573;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.death-tag {
+  color: var(--fire-red);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.modal-content h2 {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  margin: 10px 0 6px;
+  color: #fff;
+}
+
+.modal-content p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* Grid de Portas (Hades) */
+.doors-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.door-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background: #1f1b30;
+  border: 1.5px solid rgba(229, 185, 95, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
+  text-align: left;
+}
+
+.door-card:hover, .door-card:active {
+  transform: translateX(4px);
+  border-color: var(--border-gold);
+  background: #2b2545;
+}
+
+.door-icon {
+  font-size: 2rem;
+}
+
+.door-info strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.door-info small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   MODAL DO MAPA DE AUDITORIA DO SUBMUNDO (ESTILO HADES)
+   ========================================================================== */
+.map-modal-container {
+  width: 95%;
+  max-width: 410px;
+  max-height: 94vh;
+  background: radial-gradient(circle at 50% 10%, #201728 0%, #0c0812 90%);
+  border: 2px solid #ffd700;
+  border-radius: 16px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(229, 185, 95, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.map-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(18, 14, 26, 0.95);
+  border-bottom: 1.5px solid rgba(229, 185, 95, 0.3);
+}
+
+.map-header-tag {
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #ffd700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+.map-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 10px;
+  overflow-y: auto;
+  flex: 1;
+  background: #08060d;
+}
+
+.map-parchment-wrapper {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 380px;
+  position: relative;
+  border: 2px solid rgba(229, 185, 95, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.9);
+  background: #14101d;
+}
+
+.map-parchment-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.map-nodes-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+}
+
+/* Nós de Câmaras no Mapa com Miniaturas Ilustradas dos Monstros (Versão Anterior) */
+.map-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(20, 15, 30, 0.95);
+  border: 2px solid #a4b0be;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+.map-node:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.map-node.active-node {
+  border-color: #ffd700;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.95), 0 0 8px #ffd700;
+  transform: translate(-50%, -50%) scale(1.15);
+  animation: nodeActivePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes nodeActivePulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(255, 215, 0, 0.8), 0 0 4px #ffd700; }
+  50% { box-shadow: 0 0 24px rgba(255, 215, 0, 1), 0 0 10px #ffd700; }
+}
+
+.map-node.completed-node {
+  border-color: #2ed573;
+  box-shadow: 0 0 12px rgba(46, 213, 115, 0.8);
+  filter: grayscale(0.2) contrast(1.1);
+}
+
+.map-node.locked-node {
+  border-color: rgba(149, 165, 166, 0.4);
+  filter: grayscale(0.8) brightness(0.6);
+  opacity: 0.65;
+}
+
+.node-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.node-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.node-badge {
+  position: absolute;
+  bottom: -15px;
+  font-family: var(--font-title);
+  font-size: 0.44rem;
+  font-weight: 800;
+  color: #fff9e6;
+  background: rgba(10, 8, 16, 0.88);
+  border: 1px solid rgba(229, 185, 95, 0.4);
+  border-radius: 4px;
+  padding: 1px 4px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
+
+/* Pontos de Trilha Vermelhos Estilo Hades */
+.map-trail-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff4757;
+  box-shadow: 0 0 8px #ff4757;
+  z-index: 5;
+}
+
+.map-trail-dot.unlocked-dot {
+  background: #ffd700;
+  box-shadow: 0 0 8px #ffd700;
+}
+
+/* O símbolo sobreposto (⚜️ pin de Louis) foi completamente removido conforme solicitado */
+.map-player-pin {
+  display: none !important;
+}
+
+/* Cartão da Câmara Selecionada */
+.map-chamber-card {
+  width: 100%;
+  margin-top: 8px;
+  background: rgba(22, 17, 32, 0.95);
+  border: 1.5px solid rgba(229, 185, 95, 0.4);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.chamber-card-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+/* Selo Grego Cinzelado da Câmara / Próximo Destino (Estilo Hades) */
+.chamber-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-title);
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 3px 8px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.chamber-status-tag svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8));
+}
+
+.status-current {
+  background: linear-gradient(135deg, #3a0f18 0%, #170a1c 100%);
+  color: #ffeaa7;
+  border: 1.5px solid #e5b95f;
+  text-shadow: 0 1px 3px #000, 0 0 8px rgba(229, 185, 95, 0.6);
+}
+
+.status-cleared {
+  background: linear-gradient(135deg, #0d2b1d 0%, #091712 100%);
+  color: #55efc4;
+  border: 1.5px solid #2ed573;
+}
+
+.status-locked {
+  background: rgba(25, 22, 35, 0.85);
+  color: #bdc3c7;
+  border: 1px solid #7f8c8d;
+}
+
+.map-chamber-card h3 {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  color: #fffaf0;
+  margin: 0;
+}
+
+.map-chamber-card p {
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: #dcdde1;
+  font-style: italic;
+  margin: 0;
+}
+
+.map-modal-footer {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px 10px;
+  background: rgba(18, 14, 26, 0.95);
+  border-top: 1.5px solid rgba(229, 185, 95, 0.3);
+}
+
+.map-action-btn {
+  flex: 1;
+  padding: 8px;
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  font-weight: 800;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s;
+}
+
+/* Botão de Combate / Avanço com Arte Ilustrada Grega de Hades */
+.map-action-btn.primary {
+  background: url('assets/ui/btn_combat_action.png?v=29') center / 100% 100% no-repeat;
+  background-color: transparent;
+  border: none;
+  min-height: 52px;
+  padding: 14px 28px 12px;
+  color: #fff9e6;
+  font-family: var(--font-title);
+  font-size: 0.80rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px #000, 0 0 8px rgba(0, 0, 0, 0.95);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 10px rgba(229, 185, 95, 0.4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-action-btn.primary:hover, .map-action-btn.primary:active {
+  transform: scale(1.03);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 14px rgba(255, 215, 0, 0.7)) brightness(1.12);
+}
+
+.map-action-btn.secondary {
+  background: rgba(30, 24, 45, 0.9);
+  border: 1px solid rgba(229, 185, 95, 0.4);
+  color: #fff9e6;
+}
+
+/* ==========================================================================
+   TIRINHA CÔMICA INTERSTICIAL (ENTRE FASES)
+   ========================================================================== */
+.interstitial-comic-box {
+  width: 95%;
+  max-width: 410px;
+  max-height: 94vh;
+  background: #0d0a16;
+  border: 2px solid #ffd700;
+  border-radius: 16px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 71, 87, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interstitial-header {
+  padding: 10px 14px 8px;
+  text-align: center;
+  background: rgba(22, 17, 34, 0.95);
+  border-bottom: 1.5px solid rgba(229, 185, 95, 0.3);
+}
+
+.interstitial-tag {
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #ffd700;
+  display: block;
+}
+
+.interstitial-header h2 {
+  font-family: var(--font-title);
+  font-size: 0.88rem;
+  color: #fffaf0;
+  margin: 3px 0 0;
+}
+
+.interstitial-stage {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  overflow-y: auto;
+  background: #08060d;
+}
+
+.interstitial-img-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 240px;
+  border: 2px solid rgba(229, 185, 95, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
+  background: #000;
+}
+
+.interstitial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.interstitial-caption {
+  width: 100%;
+  margin-top: 8px;
+  background: rgba(22, 17, 32, 0.95);
+  border: 1px solid rgba(229, 185, 95, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.interstitial-caption p {
+  font-size: 0.74rem;
+  line-height: 1.4;
+  color: #f1f2f6;
+  font-style: italic;
+  margin: 0;
+}
+
+.interstitial-footer {
+  padding: 8px 14px 12px;
+  background: rgba(18, 14, 26, 0.95);
+  border-top: 1.5px solid rgba(229, 185, 95, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.interstitial-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.interstitial-btn-battle {
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 28px 12px;
+  background: url('assets/ui/btn_combat_action.png?v=29') center / 100% 100% no-repeat;
+  background-color: transparent;
+  border: none;
+  color: #fff9e6;
+  font-family: var(--font-title);
+  font-size: 0.84rem;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px #000, 0 0 8px rgba(0, 0, 0, 0.95);
+  cursor: pointer;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 12px rgba(231, 76, 60, 0.45));
+  transition: transform 0.15s, filter 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interstitial-btn-battle:hover, .interstitial-btn-battle:active {
+  transform: scale(1.03);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 16px rgba(255, 215, 0, 0.75)) brightness(1.14);
+}
+
+/* ==========================================================================
+   EFEITOS VISUAIS DE COMBATE (VFX DE CARTAS DIVINAS — ZEUS, ARES, HEFESTO)
+   ========================================================================== */
+.combat-vfx-overlay {
+  position: absolute;
+  inset: -30px -20px -10px -20px;
+  pointer-events: none;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vfx-zeus-bolt-svg {
+  width: 190px;
+  height: 230px;
+  filter: drop-shadow(0 0 18px #00f2fe) drop-shadow(0 0 32px #ffd700);
+  animation: vfxLightningStrike 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.vfx-shockwave-ring {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 4px solid #00f2fe;
+  box-shadow: 0 0 20px #00f2fe, inset 0 0 15px #ffd700;
+  animation: vfxShockRingExpand 0.6s ease-out forwards;
+}
+
+@keyframes vfxLightningStrike {
+  0% { opacity: 0; transform: translateY(-90px) scaleY(0.3) scaleX(1.4); filter: brightness(3) drop-shadow(0 0 35px #fff); }
+  20% { opacity: 1; transform: translateY(0) scaleY(1.1) scaleX(1.1); filter: brightness(2.5) drop-shadow(0 0 35px #00f2fe); }
+  40% { opacity: 0.85; transform: translateY(4px) scale(0.96); }
+  60% { opacity: 1; transform: translateY(0) scale(1.05); filter: brightness(2) drop-shadow(0 0 25px #ffd700); }
+  100% { opacity: 0; transform: translateY(10px) scale(0.85); }
+}
+
+@keyframes vfxShockRingExpand {
+  0% { transform: scale(0.3); opacity: 1; }
+  100% { transform: scale(4.2); opacity: 0; border-width: 1px; }
+}
+
+.vfx-ares-slash-svg {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 0 16px #ff1e42) drop-shadow(0 0 28px #b8001f);
+  animation: vfxAresCrossSlash 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.vfx-blood-burst-ring {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid #ff2e4c;
+  box-shadow: 0 0 24px #ff1e42, inset 0 0 16px #ffd700;
+  animation: vfxShockRingExpand 0.55s ease-out forwards;
+}
+
+@keyframes vfxAresCrossSlash {
+  0% { opacity: 0; transform: scale(0.25) rotate(-28deg); filter: brightness(2.5); }
+  25% { opacity: 1; transform: scale(1.18) rotate(4deg); filter: brightness(1.8) drop-shadow(0 0 30px #ff1e42); }
+  55% { opacity: 1; transform: scale(1.04) rotate(0deg); }
+  100% { opacity: 0; transform: scale(1.35) rotate(6deg); }
+}
+
+.vfx-fire-burst-svg {
+  width: 180px;
+  height: 200px;
+  filter: drop-shadow(0 0 18px #ff6b00) drop-shadow(0 0 30px #ff2e00);
+  animation: vfxFirePillar 0.7s ease-out forwards;
+}
+
+@keyframes vfxFirePillar {
+  0% { opacity: 0; transform: translateY(45px) scale(0.4); }
+  30% { opacity: 1; transform: translateY(-6px) scale(1.15); filter: brightness(1.8); }
+  100% { opacity: 0; transform: translateY(-35px) scale(0.9); }
+}
+
+.arena-vfx-flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 80;
+  animation: arenaFlashFade 0.45s ease-out forwards;
+}
+
+.arena-vfx-flash.flash-lightning {
+  background: radial-gradient(circle at 70% 28%, rgba(0, 242, 254, 0.55) 0%, rgba(255, 215, 0, 0.28) 45%, transparent 80%);
+}
+
+.arena-vfx-flash.flash-blood {
+  background: radial-gradient(circle at 70% 28%, rgba(255, 30, 66, 0.55) 0%, rgba(180, 0, 30, 0.3) 50%, transparent 80%);
+}
+
+.arena-vfx-flash.flash-fire {
+  background: radial-gradient(circle at 70% 28%, rgba(255, 140, 0, 0.5) 0%, rgba(255, 45, 0, 0.28) 50%, transparent 80%);
+}
+
+@keyframes arenaFlashFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.restart-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   BANNER CINEMATOGRÁFICO DE TRANSIÇÃO DE FASE / SALA (HADES STYLE)
+   ========================================================================== */
+.phase-transition-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(30, 15, 45, 0.96) 0%, rgba(8, 6, 12, 0.98) 85%);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 300;
+  animation: phaseFadeIn 0.35s ease-out;
+}
+
+@keyframes phaseFadeIn {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.phase-transition-content {
+  text-align: center;
+  padding: 24px;
+  max-width: 360px;
+  animation: zoomPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.phase-transition-sub {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+  display: block;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.phase-transition-content h1 {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #fffaf0;
+  margin: 0 0 8px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(229, 185, 95, 0.5);
+}
+
+.phase-divider {
+  color: #ffd700;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  margin: 6px 0 10px;
+  text-shadow: 0 0 10px #ffd700;
+}
+
+.phase-transition-content p {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #dfe4ea;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ==========================================================================
+   TELA DE BÊNÇÃO DOS DEUSES DO OLIMPO (HADES STYLE BOON SELECTION)
+   ========================================================================== */
+.boon-encounter-box {
+  width: 95%;
+  max-width: 420px;
+  max-height: 94vh;
+  background: radial-gradient(circle at 50% 10%, #1e1430 0%, #0c0914 90%);
+  border: 2px solid #ffd700;
+  border-radius: 16px;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.45), 0 0 20px rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  padding: 12px;
+}
+
+.boon-header {
+  text-align: center;
+  padding: 4px 0 8px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.boon-tag {
+  color: #ffd700;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.boon-header h2 {
+  font-family: var(--font-title);
+  color: #fff9e6;
+  font-size: 1.15rem;
+  margin: 3px 0 0;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Retrato do Deus e Balão de Diálogo Cômico */
+.boon-god-dialogue-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(26, 20, 38, 0.9);
+  border: 1.5px solid rgba(229, 185, 95, 0.4);
+  border-radius: 12px;
+  padding: 8px 10px;
+  margin: 10px 0 8px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+.boon-portrait-frame {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  border: 2px solid #ffd700;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+  background: #000;
+}
+
+.boon-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.boon-speech-container {
+  flex: 1;
+}
+
+.boon-god-name {
+  font-family: var(--font-title);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #f1c40f;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.boon-god-quote {
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: #f1f2f6;
+  font-style: italic;
+  margin: 0;
+}
+
+.boon-instruction {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #e5b95f;
+  margin: 4px 0 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Grid de 3 Cartas Escolhíveis */
+.boon-cards-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 2px 10px;
+  overflow-x: auto;
+}
+
+.boon-card-choice {
+  width: 96px;
+  height: 154px;
+  position: relative;
+  background: #14121d;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 215, 0, 0.3);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, filter 0.2s;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.boon-card-choice:hover, .boon-card-choice:active {
+  transform: translateY(-8px) scale(1.08);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 215, 0, 0.85);
+  filter: brightness(1.15);
+}
+
+.boon-card-choice .card-art-container {
+  position: absolute;
+  top: 18.5%;
+  left: 19%;
+  width: 62%;
+  height: 35%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.boon-card-choice .card-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.boon-card-choice .card-frame-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.boon-card-choice .card-cost {
+  width: 20px;
+  height: 20px;
+  font-size: 0.78rem;
+  top: 13.5%;
+  left: 18%;
+  color: #fff9e6;
+  text-shadow: 0 1px 2px #000;
+}
+
+.boon-card-choice .card-header {
+  font-size: 0.44rem;
+  top: 11%;
+  left: 28%;
+  width: 54%;
+  font-family: var(--font-title);
+  color: #fffaf0;
+}
+
+.boon-card-choice .card-desc {
+  position: absolute;
+  top: 57%;
+  left: 16%;
+  width: 68%;
+  height: 28%;
+  font-size: 0.48rem;
+  line-height: 1.2;
+  color: #fff9e6;
+  text-shadow: 0 1px 2px #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 5;
+}
+
+.boon-card-choice .card-type-tag {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  right: 0;
+  font-size: 0.46rem;
+  font-family: var(--font-title);
+  font-weight: 800;
+  color: #ffd700;
+  text-align: center;
+  z-index: 5;
+  letter-spacing: 0.6px;
+  text-shadow: 0 1px 3px #000;
+}
+
+/* Utilitários e Animações */
+.hidden {
+  display: none !important;
+}
+
+.hit-animation {
+  animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+  filter: brightness(2) drop-shadow(0 0 15px red) !important;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-3px, 0, 0); }
+  20%, 80% { transform: translate3d(5px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-5px, 0, 0); }
+  40%, 60% { transform: translate3d(5px, 0, 0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomPop {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 8px rgba(241, 196, 15, 0.4); }
+  100% { box-shadow: 0 0 20px rgba(241, 196, 15, 0.9); }
+}
+
+/* ==========================================================================
+   LEITOR DE HQ / WEBCOMIC VIEWER ESTILO HADES
+   ========================================================================== */
+.comic-viewer-box {
+  width: 92%;
+  max-width: 390px;
+  max-height: 90vh;
+  background: #0f0c18;
+  border: 2px solid var(--border-gold);
+  border-radius: 14px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.95), 0 0 20px rgba(229, 185, 95, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comic-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(20, 16, 32, 0.95);
+  border-bottom: 1px solid rgba(229, 185, 95, 0.3);
+}
+
+.comic-chapter-tag {
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #f1c40f;
+  letter-spacing: 0.5px;
+}
+
+.comic-btn-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.comic-btn-close:hover {
+  background: rgba(255, 71, 87, 0.3);
+  color: #ff4757;
+}
+
+.comic-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background: #08060d;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.comic-panel-container {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 250px;
+  border: 2px solid rgba(229, 185, 95, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #141020;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.comic-panel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.comic-caption-box {
+  width: 100%;
+  margin-top: 10px;
+  background: rgba(22, 18, 35, 0.95);
+  border: 1px solid rgba(229, 185, 95, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.comic-caption-box h3 {
+  font-family: var(--font-title);
+  font-size: 0.82rem;
+  color: #ffeaa7;
+  margin-bottom: 4px;
+}
+
+.comic-caption-box p {
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: #f1f2f6;
+  font-style: italic;
+}
+
+.comic-viewer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(20, 16, 32, 0.95);
+  border-top: 1px solid rgba(229, 185, 95, 0.3);
+}
+
+.comic-nav-btn {
+  background: linear-gradient(135deg, rgba(229, 185, 95, 0.2), rgba(30, 24, 48, 0.9));
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  color: #fff9e6;
+  font-family: var(--font-title);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.15s;
+}
+
+.comic-nav-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(229, 185, 95, 0.4), rgba(40, 32, 64, 0.95));
+  transform: translateY(-1px);
+}
+
+.comic-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.comic-dots-bar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.comic-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.comic-dot.active {
+  background: #f1c40f;
+  transform: scale(1.3);
+  box-shadow: 0 0 8px #f1c40f;
+}
+
+/* ==========================================================================
+   TELA INICIAL / CAPA DO JOGO (TITLE SCREEN)
+   ========================================================================== */
+.title-screen-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 380;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #08050d;
+  overflow: hidden;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.title-screen-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.04);
+  display: none !important;
+}
+
+.title-screen-bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.title-screen-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.title-screen-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 4, 12, 0.92) 0%,
+    rgba(10, 6, 18, 0.35) 26%,
+    rgba(10, 6, 18, 0.12) 55%,
+    rgba(8, 5, 14, 0.88) 82%,
+    rgba(5, 3, 10, 0.98) 100%
+  );
+}
+
+.title-screen-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 18px 28px;
+  text-align: center;
+}
+
+.title-header-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.title-kicker {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffd700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 12px rgba(255, 215, 0, 0.6);
+  margin-bottom: 4px;
+}
+
+.title-main-logo {
+  font-family: var(--font-title);
+  font-size: 2.35rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin: 0;
+  background: linear-gradient(180deg, #fffdf5 0%, #ffd700 52%, #d4882a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.98)) drop-shadow(0 0 22px rgba(255, 80, 30, 0.55));
+}
+
+.title-divider {
+  color: #ffd700;
+  font-size: 0.78rem;
+  letter-spacing: 6px;
+  margin: 4px 0;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.title-subtitle {
+  font-family: var(--font-title);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  color: #f3e5ab;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+}
+
+.title-footer-actions {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-start-btn {
+  width: 100%;
+  max-width: 300px;
+  height: 58px;
+  font-size: 0.92rem !important;
+  letter-spacing: 1.5px;
+  animation: pulseGoldGlow 2.4s infinite ease-in-out;
+}
+
+@keyframes pulseGoldGlow {
+  0%, 100% { filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 12px rgba(255, 190, 60, 0.45)); transform: scale(1); }
+  50% { filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 22px rgba(255, 215, 0, 0.85)); transform: scale(1.03); }
+}
+
+.title-prologue-btn {
+  background: rgba(18, 12, 28, 0.85);
+  border: 1.5px solid rgba(229, 185, 95, 0.65);
+  border-radius: 8px;
+  color: #ffeaa7;
+  font-family: var(--font-title);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 9px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.85);
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.title-prologue-btn:hover,
+.title-prologue-btn:active {
+  background: rgba(42, 28, 65, 0.95);
+  border-color: #ffd700;
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   TELA DE CONCLUSÃO / VITÓRIA FINAL (LOUIS NO TRONO DE HADES — PROPORÇÃO 9:16)
+   ========================================================================== */
+.game-over-box {
+  max-width: 380px !important;
+  width: 94% !important;
+  padding: 16px 14px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.game-over-box.victory-mode {
+  max-width: 390px !important;
+  width: 95% !important;
+  max-height: 95vh;
+  padding: 12px 14px !important;
+  gap: 6px;
+}
+
+.game-over-box.victory-mode h2 {
+  font-size: 0.92rem !important;
+  line-height: 1.25;
+  margin: 2px 0 0 !important;
+}
+
+.game-over-box.victory-mode p {
+  font-size: 0.74rem !important;
+  line-height: 1.3;
+  margin: 0 0 4px !important;
+}
+
+.ending-art-wrapper {
+  height: 54vh;
+  max-height: 450px;
+  aspect-ratio: 9 / 16;
+  width: auto;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 2px solid #ffd700;
+  overflow: hidden;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.95), 0 0 24px rgba(255, 215, 0, 0.4);
+  margin: 2px auto 4px;
+  background: #09060e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ending-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.comic-panel-container.vertical-epilogue-panel {
+  aspect-ratio: 9 / 16 !important;
+  height: 48vh !important;
+  max-height: 400px !important;
+  width: auto !important;
+  margin: 0 auto;
+}
+
+.comic-panel-container.vertical-epilogue-panel .comic-panel-img {
+  object-fit: contain !important;
+}
+
+.death-tag.victory-tag-style {
+  color: #ffd700 !important;
+  text-shadow: 0 0 14px rgba(255, 215, 0, 0.85) !important;
+  font-size: 0.82rem;
+  letter-spacing: 1.5px;
+}
+
+

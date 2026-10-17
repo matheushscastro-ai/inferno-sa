@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Inferno S/A: O Takeover de Louis Beznoir</title>
+  <link rel="stylesheet" href="style.css?v=33">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Container Vertical de Celular -->
+  <div id="mobile-viewport">
+
+    <!-- Tela Inicial / Capa do Jogo (Title Screen) -->
+    <div id="title-screen-modal" class="title-screen-overlay">
+      <div class="title-screen-bg-wrap">
+        <img src="assets/ui/title_screen_art.png?v=33" alt="Inferno S/A Key Art" class="title-screen-bg-img">
+        <div class="title-screen-vignette"></div>
+      </div>
+
+      <div class="title-screen-content">
+        <div class="title-header-block">
+          <span class="title-kicker">⚡ PRODUTOS &amp; MERCADO FINANCEIRO NO SUBMUNDO ⚡</span>
+          <h1 class="title-main-logo">INFERNO S/A</h1>
+          <div class="title-divider">✦ ✦ ✦</div>
+          <p class="title-subtitle">O TAKEOVER DE LOUIS BEZNOIR IV</p>
+        </div>
+
+        <div class="title-footer-actions">
+          <button id="btn-start-game" class="interstitial-btn-battle title-start-btn">
+            <span>INICIAR TAKEOVER</span>
+          </button>
+          <button id="btn-title-prologue" class="title-prologue-btn">
+            📖 Ler Prólogo (HQ)
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Top HUD (Informações da Run) -->
+    <header id="run-hud">
+      <div class="hud-item room-info">
+        <span class="icon">🏛️</span>
+        <span id="room-name">Círculo I: Margens do Aqueronte</span>
+      </div>
+      <div class="hud-right-actions">
+        <button id="btn-open-map" class="btn-comic-trigger" title="Roadmap do Submundo">
+          🗺️ <span class="comic-trigger-label">MAPA</span>
+        </button>
+        <button id="btn-open-comic" class="btn-comic-trigger" title="Ver Memórias / HQ da História">
+          📖 <span class="comic-trigger-label">HQ</span>
+        </button>
+        <div class="hud-item soul-gold">
+          <span class="icon">🪙</span>
+          <span id="player-gold">100</span> <small>Dracmas</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Balão de Fala do Luiz Beznol -->
+    <div id="luiz-dialogue-bubble" class="dialogue-bubble hidden">
+      <div class="dialogue-speaker-row">
+        <img src="assets/characters/luiz_beznol.png?v=4" class="dialogue-mini-portrait" alt="Protagonista">
+        <span class="speaker-tag">Louis Beznoir:</span>
+      </div>
+      <p id="dialogue-text">"Outstanding! Onde está seu manager? Quero uma audiência marcada com o próprio Hades."</p>
+    </div>
+
+    <!-- Arena de Batalha (Layout Mockup) -->
+    <main id="battle-arena">
+      <!-- Background do submundo -->
+      <div id="arena-bg-layer" class="arena-bg-layer"></div>
+
+      <!-- Quadrante Superior: Status na Esquerda, Monstro na Direita -->
+      <section class="top-battle-row">
+        <!-- Superior Esquerdo: Caixa de Status do Inimigo com Moldura Oficial Grega de Hades -->
+        <div class="enemy-hud-container">
+          <div class="enemy-hud-box ornate-hud-frame">
+            <img class="ornate-frame-bg" src="assets/ui/hud_frame_ornate.png" alt="HUD Frame" />
+            <div class="ornate-overlay-content">
+              <div class="ornate-nameplate">
+                <h3 id="enemy-name">O Estagiário Preguiçoso</h3>
+                <span id="enemy-subname" class="enemy-subname">(Sombra de Aqueronte)</span>
+              </div>
+              <div class="ornate-hp-slot">
+                <div id="enemy-hp-fill" class="hp-bar-fill" style="width: 100%;"></div>
+                <span id="enemy-hp-text" class="hp-text">40 / 40 HP</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="enemy-shield" class="shield-badge hidden">🛡️ <span id="enemy-shield-val">0</span></div>
+
+          <!-- Badges de Status Compactas (Apenas Ícone + Valor) com Tooltip Interativo -->
+          <div id="enemy-status-container" class="status-badges-row"></div>
+          <div id="status-tooltip" class="status-tooltip-popover hidden"></div>
+
+          <!-- Telegrafia de Intenção do Inimigo -->
+          <div id="enemy-intent" class="intent-badge">
+            <span id="intent-icon">🗡️</span>
+            <span id="intent-desc">7 Dano</span>
+          </div>
+        </div>
+
+        <!-- Superior Direito: Estação de Batalha do Monstro (Plataforma Estilo Pokémon) -->
+        <div id="enemy-battle-station" class="enemy-battle-station">
+          <div class="enemy-backlight-aura"></div>
+          <div id="enemy-sprite" class="enemy-fullbody-wrapper">
+            <!-- 3 Estados de Sprites do Inimigo (Idle, Attack, Hurt) -->
+            <img id="enemy-sprite-idle" src="assets/characters/estagiario_fullbody.png?v=5" alt="Inimigo Idle" class="enemy-fullbody-sprite active-enemy-idle">
+            <img id="enemy-sprite-attack" src="assets/characters/estagiario_attack.png?v=2" alt="Inimigo Attack" class="enemy-fullbody-sprite hidden-sprite">
+            <img id="enemy-sprite-hurt" src="assets/characters/estagiario_hurt.png?v=2" alt="Inimigo Hurt" class="enemy-fullbody-sprite hidden-sprite">
+            <span id="enemy-avatar-fallback" class="avatar-fallback" style="display:none;">👤</span>
+            
+            <!-- Balão Cômico de Grito do Monstro -->
+            <div id="enemy-comic-callout" class="enemy-comic-callout hidden"></div>
+          </div>
+          <!-- Plataforma Estilo Pokémon com Campo Gravitacional -->
+          <div class="pedestal-container">
+            <div class="pedestal-gravitational-field"></div>
+            <img src="assets/ui/battle_pedestal_muted.png?v=2" alt="Plataforma de Batalha" class="enemy-battle-pedestal">
+            <div class="pedestal-contact-shadow"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notificação de Fusão / Banner de Impacto Cinematográfico -->
+      <div id="fusion-banner" class="fusion-banner hidden">
+        <div class="fusion-shine"></div>
+        <div class="fusion-burst-ring"></div>
+        <span class="fusion-tag">⚡ FUSÃO ARCANA REALIZADA! ⚡</span>
+        <h2 id="fusion-card-name">CHAMA NOBRE DE HEFESTO</h2>
+        
+        <!-- Preview da Carta de Fusão Forjada -->
+        <div class="fusion-card-showcase" id="fusion-card-showcase">
+          <div class="fusion-card-frame-wrap">
+            <img id="fusion-preview-img" src="assets/cards/card_combustao_gourmet.png" class="fusion-showcase-art" alt="Carta Forjada">
+            <img class="fusion-frame-overlay" src="assets/ui/card_frame_action_cutout.png?v=3" alt="Moldura Dourada">
+            <div id="fusion-preview-cost" class="card-cost">1</div>
+            <div id="fusion-preview-header" class="card-header">CHAMA NOBRE</div>
+            <div id="fusion-preview-desc" class="card-desc">Causa 14 de dano de fogo e aplica 5 de Queimadura.</div>
+            <div class="card-type-tag">FUSÃO</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quadrante Inferior: Luiz na Esquerda (Grande), Ações na Direita -->
+      <section class="bottom-battle-row">
+        <!-- Inferior Esquerdo: Luiz (Busto/Cintura pra cima, grande!) -->
+        <div class="player-visual-column">
+          <!-- Barra de Vida Flutuando com Moldura Oficial Grega de Hades -->
+          <div class="player-hud-container">
+            <div class="player-hud-pill ornate-hud-frame player-ornate-frame">
+              <img class="ornate-frame-bg" src="assets/ui/hud_frame_ornate.png" alt="HUD Frame" />
+              <div class="ornate-overlay-content">
+                <div class="ornate-nameplate">
+                  <strong id="player-name">Louis Beznoir</strong>
+                  <span class="player-subname">Herdeiro Nobre</span>
+                </div>
+                <div class="ornate-hp-slot">
+                  <div id="player-hp-fill" class="hp-bar-fill" style="width: 100%;"></div>
+                  <span id="player-hp-text" class="hp-text">65 / 65 HP</span>
+                </div>
+              </div>
+            </div>
+            <div id="player-shield" class="shield-badge hidden">🛡️ <span id="player-shield-val">0</span></div>
+            <!-- Energia / Ações -->
+            <div class="energy-mini-tag">
+              💎 <span id="energy-current">3</span>/<span id="energy-max">3</span> Ações
+            </div>
+          </div>
+
+          <div class="player-bust-frame" id="player-bust-frame">
+            <!-- 3 Estados de Sprites do Protagonista (Idle, Attack, Hurt) -->
+            <img id="player-sprite-idle" src="assets/characters/luiz_bust.png?v=5" alt="Louis Idle" class="player-bust-sprite active-idle">
+            <img id="player-sprite-attack" src="assets/characters/lucca_attack.png?v=7" alt="Louis Attack" class="player-bust-sprite hidden-sprite">
+            <img id="player-sprite-hurt" src="assets/characters/lucca_hurt.png?v=7" alt="Louis Hurt" class="player-bust-sprite hidden-sprite">
+            
+            <!-- Balão Cômico de Grito / Reação Instantânea -->
+            <div id="player-comic-callout" class="comic-callout hidden"></div>
+          </div>
+        </div>
+
+        <!-- Inferior Direito: Cartas e Ações de Turno -->
+        <div class="battle-actions-column">
+          <!-- Mão de Cartas Horizontal -->
+          <div id="cards-hand" class="cards-hand-container">
+            <!-- Cartas inseridas dinamicamente -->
+          </div>
+
+          <!-- Rodapé com Deck e Botão Finalizar Turno -->
+          <div class="actions-subfooter">
+            <div class="deck-counts">
+              <span title="Deck de Compra">📚 <span id="draw-pile-count">6</span></span>
+              <span title="Descarte">🗑️ <span id="discard-pile-count">0</span></span>
+            </div>
+            <button id="btn-end-turn" class="btn-end-turn-styled">
+              <span class="btn-turn-icon">⏳</span>
+              <span class="btn-turn-text">END</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <!-- Banner Cinematográfico de Transição de Fase / Sala -->
+    <div id="phase-transition-overlay" class="phase-transition-overlay hidden">
+      <div class="phase-transition-content">
+        <span class="phase-transition-sub" id="phase-sub">ENTRANDO NO SUBMUNDO</span>
+        <h1 id="phase-title">CÂMARA II: CARTÓRIO DO LIMBO</h1>
+        <div class="phase-divider">✦ ✦ ✦</div>
+        <p id="phase-desc">"A fúria de mil processos não arquivados em chamas..."</p>
+      </div>
+    </div>
+
+    <!-- Modal de Encontro com Deus Olímpico (Bênçãos Estilo Hades) -->
+    <div id="god-boon-modal" class="modal-overlay hidden">
+      <div class="boon-encounter-box">
+        <div class="boon-header">
+          <span class="boon-tag">⚡ FAVORES DO OLIMPO ⚡</span>
+          <h2 id="boon-god-title">BÊNÇÃO DE HERMES</h2>
+        </div>
+
+        <div class="boon-god-dialogue-wrap">
+          <div class="boon-portrait-frame">
+            <img id="boon-god-img" src="assets/characters/god_hermes.png" alt="Deus Olímpico" class="boon-portrait-img">
+            <div class="boon-portrait-glow"></div>
+          </div>
+          <div class="boon-speech-container">
+            <div class="boon-god-name" id="boon-god-name">Hermes, o Mensageiro</div>
+            <p id="boon-god-quote" class="boon-god-quote">
+              "E aí, primo rico! Soube que você engasgou com uma ostra de 4.000 euros na Côte d'Azur? Hahaha! Toma aqui uma bênção dos céus antes que o chefe descubra."
+            </p>
+          </div>
+        </div>
+
+        <div class="boon-instruction">Escolha 1 Dádiva Divina para anexar ao seu Deck:</div>
+
+        <div id="boon-cards-container" class="boon-cards-grid">
+          <!-- 3 cartas de bênção geradas dinamicamente com moldura dourada e artes exclusivas -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Tela Modal de Vitória / Escolha de Portas (Hades Style) -->
+    <div id="room-choice-modal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <span class="room-victory-tag">✨ SALA LIMPA! ✨</span>
+        <h2>"Flawless execution, guys!"</h2>
+        <p>Escolha a próxima etapa do Roadmap no Submundo:</p>
+
+        <div id="doors-container" class="doors-grid">
+          <!-- Portas são geradas dinamicamente -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Tela de Derrota / Conclusão da Campanha -->
+    <div id="game-over-modal" class="modal-overlay hidden">
+      <div class="modal-content game-over-box">
+        <span class="death-tag">💀 OPERAÇÃO LIQUIDADA 💀</span>
+        <div id="game-over-art-wrap" class="ending-art-wrapper hidden">
+          <img id="game-over-art-img" src="assets/comic/ending_victory_throne.png?v=33" alt="Louis no Trono de Hades" class="ending-art-img">
+        </div>
+        <h2>"Isso é um dealbreaker total..."</h2>
+        <p>Louis entrou em colapso nas chamas do Círculo I.</p>
+        <button id="btn-restart" class="interstitial-btn-battle restart-btn">
+          <span id="btn-restart-text">TENTAR NOVAMENTE</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tela Modal de Leitor de HQ / Histórias e Memórias -->
+    <div id="comic-modal" class="modal-overlay hidden">
+      <div class="comic-viewer-box">
+        <div class="comic-viewer-header">
+          <span class="comic-chapter-tag">📖 MEMÓRIAS DE LOUIS: PRÓLOGO</span>
+          <button id="btn-close-comic" class="comic-btn-close">✕</button>
+        </div>
+
+        <div class="comic-stage">
+          <div id="comic-panel-container" class="comic-panel-container">
+            <img id="comic-panel-img" src="" alt="Painel da HQ" class="comic-panel-img">
+          </div>
+          <div class="comic-caption-box">
+            <h3 id="comic-caption-title">Cena I: Riviera Francesa</h3>
+            <p id="comic-caption-text">"Louis desfrutava de seu espumante biodinâmico..."</p>
+          </div>
+        </div>
+
+        <div class="comic-viewer-footer">
+          <button id="comic-prev-btn" class="comic-nav-btn">◀ Anterior</button>
+          <div id="comic-dots-bar" class="comic-dots-bar">
+            <!-- Indicadores dinâmicos de página -->
+          </div>
+          <button id="comic-next-btn" class="comic-nav-btn">Próximo ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal do Mapa de Roadmap do Submundo (Estilo Hades) -->
+    <div id="map-modal" class="modal-overlay hidden">
+      <div class="map-modal-container">
+        <div class="map-modal-header">
+          <span class="map-header-tag">🏛️ ROADMAP DE PRODUTOS DO SUBMUNDO 🏛️</span>
+          <button id="btn-close-map" class="comic-btn-close">✕</button>
+        </div>
+
+        <div class="map-stage">
+          <div class="map-parchment-wrapper">
+            <img id="map-parchment-img" src="assets/ui/underworld_audit_map.png" alt="Mapa do Submundo" class="map-parchment-img">
+
+            <!-- Trilha de Nós / Câmaras no Mapa (Versão com Miniaturas dos Monstros, SEM o símbolo sobreposto) -->
+            <div class="map-nodes-layer">
+              <!-- Câmara 5: Hades S/A (Topo) -->
+              <div class="map-node node-chamber" data-chamber="5" style="top: 24%; left: 50%;">
+                <div class="node-icon"><img src="assets/ui/map_node_5.png?v=31" class="node-thumb-img" alt="Hades"></div>
+                <div class="node-badge">GABINETE</div>
+              </div>
+
+              <!-- Pontos de Trilha 4-5 -->
+              <div class="map-trail-dot dot-4-5" style="top: 30%; left: 50%;"></div>
+              <div class="map-trail-dot dot-4-5" style="top: 36%; left: 50%;"></div>
+
+              <!-- Câmara 4: Tribunal de Minos -->
+              <div class="map-node node-chamber" data-chamber="4" style="top: 42%; left: 50%;">
+                <div class="node-icon"><img src="assets/ui/map_node_4.png?v=31" class="node-thumb-img" alt="Rei Minos"></div>
+                <div class="node-badge">TRIBUNAL</div>
+              </div>
+
+              <!-- Pontos de Trilha 3-4 -->
+              <div class="map-trail-dot dot-3-4" style="top: 48%; left: 45%;"></div>
+              <div class="map-trail-dot dot-3-4" style="top: 51%; left: 48%;"></div>
+
+              <!-- Câmara 3: Portões do Cócito -->
+              <div class="map-node node-chamber" data-chamber="3" style="top: 55%; left: 50%;">
+                <div class="node-icon"><img src="assets/ui/map_node_3.png?v=31" class="node-thumb-img" alt="Gárgula"></div>
+                <div class="node-badge">CÓCITO</div>
+              </div>
+
+              <!-- Pontos de Trilha 2-3 -->
+              <div class="map-trail-dot dot-2-3" style="top: 61%; left: 56%;"></div>
+              <div class="map-trail-dot dot-2-3" style="top: 66%; left: 63%;"></div>
+
+              <!-- Câmara 2: Cartório do Limbo -->
+              <div class="map-node node-chamber" data-chamber="2" style="top: 71%; left: 68%;">
+                <div class="node-icon"><img src="assets/ui/map_node_2.png?v=31" class="node-thumb-img" alt="Recepcionista"></div>
+                <div class="node-badge">CARTÓRIO</div>
+              </div>
+
+              <!-- Pontos de Trilha 1-2 -->
+              <div class="map-trail-dot dot-1-2" style="top: 77%; left: 63%;"></div>
+              <div class="map-trail-dot dot-1-2" style="top: 83%; left: 58%;"></div>
+
+              <!-- Câmara 1: Margens do Aqueronte (Base) -->
+              <div class="map-node node-chamber active-node" data-chamber="1" style="top: 88%; left: 54%;">
+                <div class="node-icon"><img src="assets/ui/map_node_1.png?v=31" class="node-thumb-img" alt="Estagiário"></div>
+                <div class="node-badge">AQUERONTE</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cartão Informativo da Câmara Atual -->
+          <div class="map-chamber-card">
+            <div class="chamber-card-top">
+              <span id="map-card-status" class="chamber-status-tag status-current">CÂMARA ATUAL</span>
+              <h3 id="map-card-title">Câmara I: Margens do Aqueronte</h3>
+            </div>
+            <p id="map-card-desc">"Onde as almas recém-chegadas aguardam atendimento perpétuo às margens do rio cinzento..."</p>
+          </div>
+        </div>
+
+        <div class="map-modal-footer">
+          <button id="map-btn-proceed" class="map-action-btn primary hidden">AVANÇAR PARA CÂMARA</button>
+          <button id="map-btn-close-bottom" class="map-action-btn secondary">Voltar à Arena ↩</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Tirinha Cômica Intersticial (Entre Fases) - 2 Slides -->
+    <div id="interstitial-comic-modal" class="modal-overlay hidden">
+      <div class="interstitial-comic-box">
+        <div class="interstitial-header">
+          <span class="interstitial-tag">📜 CRÔNICAS DO SUBMUNDO</span>
+          <h2 id="interstitial-title">TRANSIÇÃO: RUMO AO CARTÓRIO DO LIMBO</h2>
+        </div>
+
+        <div class="interstitial-stage">
+          <div class="interstitial-img-wrapper">
+            <img id="interstitial-img" src="assets/comic/comic_transition_1_2_panel1.png?v=31" alt="Tirinha Intersticial" class="interstitial-img">
+          </div>
+          <div class="interstitial-caption">
+            <p id="interstitial-caption-text">
+              "Louis achou que podia dar gorjeta na catraca do submundo: 'Cobrem da conta do meu pai, gentileza...'"
+            </p>
+          </div>
+        </div>
+
+        <div class="interstitial-footer">
+          <div id="interstitial-dots" class="interstitial-dots">
+            <span class="comic-dot active" data-slide="0"></span>
+            <span class="comic-dot" data-slide="1"></span>
+          </div>
+          <button id="btn-interstitial-continue" class="interstitial-btn-battle">
+            <span id="btn-interstitial-text">PRÓXIMO QUADRO</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="src/game.js?v=33"></script>
+</body>
+</html>

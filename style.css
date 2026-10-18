@@ -2913,4 +2913,173 @@ body {
   letter-spacing: 1.5px;
 }
 
+/* ==========================================================================
+   SISTEMA ROGUELIKE: BARRA DE ATIVOS/RELÍQUIAS, PASSIVA DE BOSS, BUROCRACIA & MERCADO
+   ========================================================================== */
+.relics-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  background: linear-gradient(90deg, rgba(16, 11, 26, 0.94) 0%, rgba(28, 18, 42, 0.92) 50%, rgba(16, 11, 26, 0.94) 100%);
+  border-bottom: 1px solid rgba(229, 185, 95, 0.35);
+  min-height: 26px;
+  z-index: 35;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.relics-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.relics-label {
+  font-family: var(--font-title);
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #e5b95f;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-right: 2px;
+}
+
+.relic-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(38, 25, 58, 0.92);
+  border: 1px solid rgba(255, 215, 0, 0.55);
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #fff9e6;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.relic-pill:hover,
+.relic-pill:active {
+  transform: scale(1.05);
+  border-color: #ffd700;
+  background: rgba(58, 38, 88, 0.96);
+}
+
+.enemy-passive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+  padding: 2px 7px;
+  background: rgba(25, 12, 24, 0.92);
+  border: 1px solid rgba(255, 107, 129, 0.6);
+  border-radius: 6px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #ffb8b8;
+  max-width: 195px;
+  line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.enemy-passive-badge.phase2-enrage {
+  background: rgba(90, 10, 22, 0.95);
+  border-color: #ffd700;
+  color: #ffd700;
+  animation: pulseGoldGlow 1.5s infinite;
+}
+
+/* Carta de Burocracia / Maldição (Formulário 9.999) */
+.game-card.curse-card {
+  filter: hue-rotate(320deg) saturate(1.35);
+}
+
+.game-card.curse-card .card-header {
+  color: #ff6b81 !important;
+}
+
+.game-card.curse-card .card-type-tag {
+  background: #8b0000 !important;
+  color: #ffd700 !important;
+  border-color: #ff4757 !important;
+}
+
+/* Botão de Reroll nas Bênçãos Olímpicas */
+.boon-footer-actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.boon-reroll-btn {
+  background: linear-gradient(180deg, rgba(44, 28, 68, 0.95) 0%, rgba(22, 14, 36, 0.98) 100%);
+  border: 1.5px solid #ffd700;
+  border-radius: 8px;
+  color: #ffeaa7;
+  font-family: var(--font-title);
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 7px 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.85);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.boon-reroll-btn:hover,
+.boon-reroll-btn:active {
+  transform: scale(1.03);
+  filter: brightness(1.15);
+}
+
+.boon-reroll-btn:disabled {
+  opacity: 0.45;
+  border-color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Modal de Arquétipos e Estratégia Entre Câmaras */
+.archetype-box,
+.strategy-modal-box {
+  max-width: 400px !important;
+  width: 94% !important;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 16px 14px !important;
+}
+
+.strategy-status-bar {
+  background: rgba(15, 10, 24, 0.9);
+  border: 1px solid rgba(229, 185, 95, 0.45);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.72rem !important;
+  font-weight: 700;
+  color: #ffeaa7 !important;
+  margin: 6px 0 10px !important;
+}
+
+.door-card.disabled-door {
+  opacity: 0.48;
+  pointer-events: none;
+  filter: grayscale(0.5);
+}
+
+.door-cost-tag {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  margin-left: 4px;
+  background: rgba(255, 215, 0, 0.18);
+  border: 1px solid rgba(255, 215, 0, 0.55);
+  color: #ffd700;
+}
+
+
 

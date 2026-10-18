@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Inferno S/A: O Takeover de Louis Beznoir</title>
-  <link rel="stylesheet" href="style.css?v=33">
+  <link rel="stylesheet" href="style.css?v=34">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
     <!-- Tela Inicial / Capa do Jogo (Title Screen) -->
     <div id="title-screen-modal" class="title-screen-overlay">
       <div class="title-screen-bg-wrap">
-        <img src="assets/ui/title_screen_art.png?v=33" alt="Inferno S/A Key Art" class="title-screen-bg-img">
+        <img src="assets/ui/title_screen_art.png?v=34" alt="Inferno S/A Key Art" class="title-screen-bg-img">
         <div class="title-screen-vignette"></div>
       </div>
 
@@ -35,6 +35,18 @@
           <button id="btn-title-prologue" class="title-prologue-btn">
             📖 Ler Prólogo (HQ)
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Seleção de Tese de Operação (Arquétipo Roguelike) -->
+    <div id="archetype-modal" class="modal-overlay hidden">
+      <div class="modal-content archetype-box">
+        <span class="room-victory-tag">💼 TESE DE INVESTIMENTO 💼</span>
+        <h2>Escolha sua Estratégia de Takeover</h2>
+        <p>Cada tese define seu Ativo Passivo inicial e a composição do seu Deck:</p>
+        <div id="archetype-choices" class="doors-grid archetype-grid">
+          <!-- Gerado dinamicamente via game.js -->
         </div>
       </div>
     </div>
@@ -58,6 +70,9 @@
         </div>
       </div>
     </header>
+
+    <!-- Barra de Ativos / Relíquias Passivas da Run -->
+    <div id="relics-bar" class="relics-bar"></div>
 
     <!-- Balão de Fala do Luiz Beznol -->
     <div id="luiz-dialogue-bubble" class="dialogue-bubble hidden">
@@ -94,6 +109,7 @@
           <div id="enemy-shield" class="shield-badge hidden">🛡️ <span id="enemy-shield-val">0</span></div>
 
           <!-- Badges de Status Compactas (Apenas Ícone + Valor) com Tooltip Interativo -->
+          <div id="enemy-passive-badge" class="enemy-passive-badge"></div>
           <div id="enemy-status-container" class="status-badges-row"></div>
           <div id="status-tooltip" class="status-tooltip-popover hidden"></div>
 
@@ -242,18 +258,24 @@
         <div id="boon-cards-container" class="boon-cards-grid">
           <!-- 3 cartas de bênção geradas dinamicamente com moldura dourada e artes exclusivas -->
         </div>
+
+        <div class="boon-footer-actions">
+          <button id="btn-reroll-boon" class="boon-reroll-btn">
+            🎲 Subornar Olimpo: Trocar Ofertas (-25 🪙)
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- Tela Modal de Vitória / Escolha de Portas (Hades Style) -->
+    <!-- Tela Modal de Estratégia Entre Câmaras (Mercado de Caronte & Roadmap) -->
     <div id="room-choice-modal" class="modal-overlay hidden">
-      <div class="modal-content">
-        <span class="room-victory-tag">✨ SALA LIMPA! ✨</span>
-        <h2>"Flawless execution, guys!"</h2>
-        <p>Escolha a próxima etapa do Roadmap no Submundo:</p>
+      <div class="modal-content strategy-modal-box">
+        <span class="room-victory-tag">✨ CÂMARA CONQUISTADA! ✨</span>
+        <h2>Decisão Estratégica de Roadmap</h2>
+        <p id="room-choice-status-bar" class="strategy-status-bar">❤️ 65/65 HP &nbsp;|&nbsp; 🪙 150 Dracmas &nbsp;|&nbsp; 📚 8 Cartas</p>
 
         <div id="doors-container" class="doors-grid">
-          <!-- Portas são geradas dinamicamente -->
+          <!-- Opções estratégicas geradas dinamicamente -->
         </div>
       </div>
     </div>
@@ -413,6 +435,6 @@
 
   </div>
 
-  <script type="module" src="src/game.js?v=33"></script>
+  <script type="module" src="src/game.js?v=34"></script>
 </body>
 </html>

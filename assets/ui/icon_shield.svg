@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="shGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7ce8ff"/>
+      <stop offset="50%" stop-color="#1e90ff"/>
+      <stop offset="100%" stop-color="#0b2e59"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 4 L56 14 V32 C56 47 44 56 32 61 C20 56 8 47 8 32 V14 Z" fill="url(#shGrad)" stroke="#0d0806" stroke-width="4"/>
+  <path d="M32 9 L50 17 V31 C50 43 40 50 32 55 C24 50 14 43 14 31 V17 Z" fill="none" stroke="#ffd700" stroke-width="3"/>
+  <polygon points="32,16 40,31 32,46 24,31" fill="#ffd700" stroke="#1a0d00" stroke-width="2"/>
+</svg>

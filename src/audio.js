@@ -39,6 +39,11 @@ class SoundFX {
     osc.stop(this.ctx.currentTime + 0.12);
   }
 
+  // Som de comprar carta / virar página (Folha rápida)
+  cardDraw() {
+    this.playCard();
+  }
+
   // Som de ataque de espada / estocada (Slash metálico)
   swordSlash() {
     this.init();

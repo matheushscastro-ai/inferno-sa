@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Inferno S/A: O Takeover de Louis Beznoir</title>
-  <link rel="stylesheet" href="style.css?v=34">
+  <link rel="stylesheet" href="style.css?v=35">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
 
       <div class="title-screen-content">
         <div class="title-header-block">
-          <span class="title-kicker">⚡ PRODUTOS &amp; MERCADO FINANCEIRO NO SUBMUNDO ⚡</span>
+          <span class="title-kicker"><img src="assets/ui/icon_energy.svg" class="inline-ui-art" alt=""> PRODUTOS &amp; MERCADO FINANCEIRO NO SUBMUNDO <img src="assets/ui/icon_energy.svg" class="inline-ui-art" alt=""></span>
           <h1 class="title-main-logo">INFERNO S/A</h1>
           <div class="title-divider">✦ ✦ ✦</div>
           <p class="title-subtitle">O TAKEOVER DE LOUIS BEZNOIR IV</p>
@@ -33,7 +33,7 @@
             <span>INICIAR TAKEOVER</span>
           </button>
           <button id="btn-title-prologue" class="title-prologue-btn">
-            📖 Ler Prólogo (HQ)
+            <img src="assets/ui/icon_scroll.svg" class="inline-ui-art" alt=""> Ler Prólogo (HQ)
           </button>
         </div>
       </div>
@@ -42,7 +42,7 @@
     <!-- Modal de Seleção de Tese de Operação (Arquétipo Roguelike) -->
     <div id="archetype-modal" class="modal-overlay hidden">
       <div class="modal-content archetype-box">
-        <span class="room-victory-tag">💼 TESE DE INVESTIMENTO 💼</span>
+        <span class="room-victory-tag"><img src="assets/ui/icon_scales.svg" class="inline-ui-art" alt=""> TESE DE INVESTIMENTO <img src="assets/ui/icon_scales.svg" class="inline-ui-art" alt=""></span>
         <h2>Escolha sua Estratégia de Takeover</h2>
         <p>Cada tese define seu Ativo Passivo inicial e a composição do seu Deck:</p>
         <div id="archetype-choices" class="doors-grid archetype-grid">
@@ -54,18 +54,18 @@
     <!-- Top HUD (Informações da Run) -->
     <header id="run-hud">
       <div class="hud-item room-info">
-        <span class="icon">🏛️</span>
+        <span class="icon"><img src="assets/ui/icon_temple.svg" class="hud-art-icon" alt=""></span>
         <span id="room-name">Círculo I: Margens do Aqueronte</span>
       </div>
       <div class="hud-right-actions">
         <button id="btn-open-map" class="btn-comic-trigger" title="Roadmap do Submundo">
-          🗺️ <span class="comic-trigger-label">MAPA</span>
+          <img src="assets/ui/icon_map.svg" class="hud-art-icon" alt=""> <span class="comic-trigger-label">MAPA</span>
         </button>
         <button id="btn-open-comic" class="btn-comic-trigger" title="Ver Memórias / HQ da História">
-          📖 <span class="comic-trigger-label">HQ</span>
+          <img src="assets/ui/icon_scroll.svg" class="hud-art-icon" alt=""> <span class="comic-trigger-label">HQ</span>
         </button>
         <div class="hud-item soul-gold">
-          <span class="icon">🪙</span>
+          <span class="icon"><img src="assets/ui/icon_dracma.svg" class="hud-art-icon" alt=""></span>
           <span id="player-gold">100</span> <small>Dracmas</small>
         </div>
       </div>
@@ -106,7 +106,7 @@
             </div>
           </div>
 
-          <div id="enemy-shield" class="shield-badge hidden">🛡️ <span id="enemy-shield-val">0</span></div>
+          <div id="enemy-shield" class="shield-badge hidden"><img src="assets/ui/icon_shield.svg" class="inline-ui-art" alt=""> <span id="enemy-shield-val">0</span></div>
 
           <!-- Badges de Status Compactas (Apenas Ícone + Valor) com Tooltip Interativo -->
           <div id="enemy-passive-badge" class="enemy-passive-badge"></div>
@@ -115,7 +115,7 @@
 
           <!-- Telegrafia de Intenção do Inimigo -->
           <div id="enemy-intent" class="intent-badge">
-            <span id="intent-icon">🗡️</span>
+            <span id="intent-icon"><img src="assets/ui/icon_sword.svg" class="intent-art-icon" alt=""></span>
             <span id="intent-desc">7 Dano</span>
           </div>
         </div>
@@ -128,7 +128,7 @@
             <img id="enemy-sprite-idle" src="assets/characters/estagiario_fullbody.png?v=5" alt="Inimigo Idle" class="enemy-fullbody-sprite active-enemy-idle">
             <img id="enemy-sprite-attack" src="assets/characters/estagiario_attack.png?v=2" alt="Inimigo Attack" class="enemy-fullbody-sprite hidden-sprite">
             <img id="enemy-sprite-hurt" src="assets/characters/estagiario_hurt.png?v=2" alt="Inimigo Hurt" class="enemy-fullbody-sprite hidden-sprite">
-            <span id="enemy-avatar-fallback" class="avatar-fallback" style="display:none;">👤</span>
+            <span id="enemy-avatar-fallback" class="avatar-fallback" style="display:none;"><img src="assets/ui/icon_skull.svg" class="inline-ui-art" alt=""></span>
             
             <!-- Balão Cômico de Grito do Monstro -->
             <div id="enemy-comic-callout" class="enemy-comic-callout hidden"></div>
@@ -146,7 +146,7 @@
       <div id="fusion-banner" class="fusion-banner hidden">
         <div class="fusion-shine"></div>
         <div class="fusion-burst-ring"></div>
-        <span class="fusion-tag">⚡ FUSÃO ARCANA REALIZADA! ⚡</span>
+        <span class="fusion-tag"><img src="assets/ui/icon_energy.svg" class="inline-ui-art" alt=""> FUSÃO ARCANA REALIZADA! <img src="assets/ui/icon_energy.svg" class="inline-ui-art" alt=""></span>
         <h2 id="fusion-card-name">CHAMA NOBRE DE HEFESTO</h2>
         
         <!-- Preview da Carta de Fusão Forjada -->
@@ -181,10 +181,10 @@
                 </div>
               </div>
             </div>
-            <div id="player-shield" class="shield-badge hidden">🛡️ <span id="player-shield-val">0</span></div>
+            <div id="player-shield" class="shield-badge hidden"><img src="assets/ui/icon_shield.svg" class="inline-ui-art" alt=""> <span id="player-shield-val">0</span></div>
             <!-- Energia / Ações -->
             <div class="energy-mini-tag">
-              💎 <span id="energy-current">3</span>/<span id="energy-max">3</span> Ações
+              <img src="assets/ui/icon_energy.svg" class="inline-ui-art" alt=""> <span id="energy-current">3</span>/<span id="energy-max">3</span> Ações
             </div>
           </div>
 
@@ -209,11 +209,11 @@
           <!-- Rodapé com Deck e Botão Finalizar Turno -->
           <div class="actions-subfooter">
             <div class="deck-counts">
-              <span title="Deck de Compra">📚 <span id="draw-pile-count">6</span></span>
-              <span title="Descarte">🗑️ <span id="discard-pile-count">0</span></span>
+              <span title="Deck de Compra"><img src="assets/ui/icon_deck.svg" class="inline-ui-art" alt=""> <span id="draw-pile-count">6</span></span>
+              <span title="Descarte"><img src="assets/ui/icon_discard.svg" class="inline-ui-art" alt=""> <span id="discard-pile-count">0</span></span>
             </div>
             <button id="btn-end-turn" class="btn-end-turn-styled">
-              <span class="btn-turn-icon">⏳</span>
+              <span class="btn-turn-icon"><img src="assets/ui/icon_sword.svg" class="inline-ui-art" alt=""></span>
               <span class="btn-turn-text">END</span>
             </button>
           </div>
@@ -236,7 +236,7 @@
     <div id="god-boon-modal" class="modal-overlay hidden">
       <div class="boon-encounter-box">
         <div class="boon-header">
-          <span class="boon-tag">⚡ FAVORES DO OLIMPO ⚡</span>
+          <span class="boon-tag"><img src="assets/ui/icon_energy.svg" class="inline-ui-art" alt=""> FAVORES DO OLIMPO <img src="assets/ui/icon_energy.svg" class="inline-ui-art" alt=""></span>
           <h2 id="boon-god-title">BÊNÇÃO DE HERMES</h2>
         </div>
 
@@ -261,7 +261,7 @@
 
         <div class="boon-footer-actions">
           <button id="btn-reroll-boon" class="boon-reroll-btn">
-            🎲 Subornar Olimpo: Trocar Ofertas (-25 🪙)
+            <img src="assets/ui/icon_dice.svg" class="inline-ui-art" alt=""> Subornar Olimpo: Trocar Ofertas (-25 <img src="assets/ui/icon_dracma.svg" class="inline-ui-art" alt="">)
           </button>
         </div>
       </div>
@@ -270,9 +270,9 @@
     <!-- Tela Modal de Estratégia Entre Câmaras (Mercado de Caronte & Roadmap) -->
     <div id="room-choice-modal" class="modal-overlay hidden">
       <div class="modal-content strategy-modal-box">
-        <span class="room-victory-tag">✨ CÂMARA CONQUISTADA! ✨</span>
+        <span class="room-victory-tag"><img src="assets/ui/icon_spark.svg" class="inline-ui-art" alt=""> CÂMARA CONQUISTADA! <img src="assets/ui/icon_spark.svg" class="inline-ui-art" alt=""></span>
         <h2>Decisão Estratégica de Roadmap</h2>
-        <p id="room-choice-status-bar" class="strategy-status-bar">❤️ 65/65 HP &nbsp;|&nbsp; 🪙 150 Dracmas &nbsp;|&nbsp; 📚 8 Cartas</p>
+        <p id="room-choice-status-bar" class="strategy-status-bar"><img src="assets/ui/icon_hp.svg" class="inline-ui-art" alt=""> 65/65 HP &nbsp;|&nbsp; <img src="assets/ui/icon_dracma.svg" class="inline-ui-art" alt=""> 150 Dracmas &nbsp;|&nbsp; <img src="assets/ui/icon_deck.svg" class="inline-ui-art" alt=""> 8 Cartas</p>
 
         <div id="doors-container" class="doors-grid">
           <!-- Opções estratégicas geradas dinamicamente -->
@@ -283,7 +283,7 @@
     <!-- Tela de Derrota / Conclusão da Campanha -->
     <div id="game-over-modal" class="modal-overlay hidden">
       <div class="modal-content game-over-box">
-        <span class="death-tag">💀 OPERAÇÃO LIQUIDADA 💀</span>
+        <span class="death-tag"><img src="assets/ui/icon_skull.svg" class="inline-ui-art" alt=""> OPERAÇÃO LIQUIDADA <img src="assets/ui/icon_skull.svg" class="inline-ui-art" alt=""></span>
         <div id="game-over-art-wrap" class="ending-art-wrapper hidden">
           <img id="game-over-art-img" src="assets/comic/ending_victory_throne.png?v=33" alt="Louis no Trono de Hades" class="ending-art-img">
         </div>
@@ -299,7 +299,7 @@
     <div id="comic-modal" class="modal-overlay hidden">
       <div class="comic-viewer-box">
         <div class="comic-viewer-header">
-          <span class="comic-chapter-tag">📖 MEMÓRIAS DE LOUIS: PRÓLOGO</span>
+          <span class="comic-chapter-tag"><img src="assets/ui/icon_scroll.svg" class="inline-ui-art" alt=""> MEMÓRIAS DE LOUIS: PRÓLOGO</span>
           <button id="btn-close-comic" class="comic-btn-close">✕</button>
         </div>
 
@@ -327,7 +327,7 @@
     <div id="map-modal" class="modal-overlay hidden">
       <div class="map-modal-container">
         <div class="map-modal-header">
-          <span class="map-header-tag">🏛️ ROADMAP DE PRODUTOS DO SUBMUNDO 🏛️</span>
+          <span class="map-header-tag"><img src="assets/ui/icon_temple.svg" class="inline-ui-art" alt=""> ROADMAP DE PRODUTOS DO SUBMUNDO <img src="assets/ui/icon_temple.svg" class="inline-ui-art" alt=""></span>
           <button id="btn-close-map" class="comic-btn-close">✕</button>
         </div>
 
@@ -397,7 +397,7 @@
 
         <div class="map-modal-footer">
           <button id="map-btn-proceed" class="map-action-btn primary hidden">AVANÇAR PARA CÂMARA</button>
-          <button id="map-btn-close-bottom" class="map-action-btn secondary">Voltar à Arena ↩</button>
+          <button id="map-btn-close-bottom" class="map-action-btn secondary">Voltar à Arena</button>
         </div>
       </div>
     </div>
@@ -406,7 +406,7 @@
     <div id="interstitial-comic-modal" class="modal-overlay hidden">
       <div class="interstitial-comic-box">
         <div class="interstitial-header">
-          <span class="interstitial-tag">📜 CRÔNICAS DO SUBMUNDO</span>
+          <span class="interstitial-tag"><img src="assets/ui/icon_scroll.svg" class="inline-ui-art" alt=""> CRÔNICAS DO SUBMUNDO</span>
           <h2 id="interstitial-title">TRANSIÇÃO: RUMO AO CARTÓRIO DO LIMBO</h2>
         </div>
 
@@ -435,6 +435,6 @@
 
   </div>
 
-  <script type="module" src="src/game.js?v=34"></script>
+  <script type="module" src="src/game.js?v=35"></script>
 </body>
 </html>

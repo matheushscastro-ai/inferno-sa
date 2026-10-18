@@ -12,7 +12,7 @@ export const CARD_DATABASE = {
     name: 'Toque Nobre',
     type: 'action',
     cost: 1,
-    icon: '✨',
+    icon: 'assets/ui/icon_spark.svg',
     image: 'assets/cards/card_toque_aristocratico.png',
     desc: 'Causa 7 de dano arcano com um estalar de dedos pomposo.',
     damage: 7,
@@ -24,7 +24,7 @@ export const CARD_DATABASE = {
     name: 'Liminar Arcana',
     type: 'action',
     cost: 1,
-    icon: '📜',
+    icon: 'assets/ui/icon_scroll.svg',
     image: 'assets/cards/card_liminar_arcana.png',
     desc: 'Gera 8 de armadura invocando um pergaminho sagrado de proteção.',
     damage: 0,
@@ -36,7 +36,7 @@ export const CARD_DATABASE = {
     name: 'Estocada Ágil',
     type: 'action',
     cost: 0,
-    icon: '🗡️',
+    icon: 'assets/ui/icon_sword.svg',
     image: 'assets/cards/card_estocada_precisa.png',
     desc: 'Custo 0! Golpe rápido de esgrima causando 4 de dano.',
     damage: 4,
@@ -48,12 +48,12 @@ export const CARD_DATABASE = {
     name: 'Retórica Nobre',
     type: 'action',
     cost: 1,
-    icon: '📜✨',
+    icon: 'assets/ui/status_confusao.svg',
     image: 'assets/cards/card_retorica_duelo.png',
     desc: 'Causa 4 de dano e aplica Confusão (+50% de dano sofrido).',
     damage: 4,
     shield: 0,
-    applyStatus: { type: 'daze', duration: 2, icon: '📢', name: 'Confusão' },
+    applyStatus: { type: 'daze', duration: 2, icon: 'assets/ui/status_confusao.svg', name: 'Confusão' },
     flavor: 'Uma oratória tão arrogante que desestabiliza o oponente.'
   },
   blefe_mercado: {
@@ -61,7 +61,7 @@ export const CARD_DATABASE = {
     name: 'Finta Nobre',
     type: 'action',
     cost: 1,
-    icon: '🎭',
+    icon: 'assets/ui/icon_shield.svg',
     image: 'assets/cards/card_toque_aristocratico.png',
     desc: 'Gera 7 de armadura. Se o inimigo for atacar, compra 1 carta.',
     damage: 0,
@@ -74,7 +74,7 @@ export const CARD_DATABASE = {
     name: 'Contragolpe',
     type: 'action',
     cost: 1,
-    icon: '⚖️',
+    icon: 'assets/ui/icon_scales.svg',
     image: 'assets/cards/card_estocada_precisa.png',
     desc: 'Causa 6 de dano + o dobro do dano sofrido no último turno.',
     damage: 6,
@@ -91,12 +91,12 @@ export const CARD_DATABASE = {
     element: 'fire',
     vfxType: 'fire',
     cost: 1,
-    icon: '🔥',
+    icon: 'assets/ui/status_fogo.svg',
     image: 'assets/cards/card_chamas_hefesto.png',
     desc: 'Hefesto: Aplica 4 de Queimadura no inimigo.',
     damage: 3,
     shield: 0,
-    applyStatus: { type: 'burn', stacks: 4, icon: '🔥', name: 'Queimadura' },
+    applyStatus: { type: 'burn', stacks: 4, icon: 'assets/ui/status_fogo.svg', name: 'Queimadura' },
     flavor: 'Fogo refinado das forjas divinas.'
   },
   bencao_raio: {
@@ -106,12 +106,12 @@ export const CARD_DATABASE = {
     element: 'lightning',
     vfxType: 'lightning',
     cost: 1,
-    icon: '⚡',
+    icon: 'assets/ui/status_raio.svg',
     image: 'assets/cards/card_bencao_raio.png?v=29',
     desc: 'Zeus: Causa 6 de dano e aplica 2 Choques (detona dano extra).',
     damage: 6,
     shield: 0,
-    applyStatus: { type: 'shock', stacks: 2, icon: '⚡', name: 'Choque' },
+    applyStatus: { type: 'shock', stacks: 2, icon: 'assets/ui/status_raio.svg', name: 'Choque' },
     flavor: 'A aprovação reluzente do Olimpo.'
   },
   bencao_guerra: {
@@ -121,12 +121,12 @@ export const CARD_DATABASE = {
     element: 'blood',
     vfxType: 'blood',
     cost: 1,
-    icon: '⚔️',
+    icon: 'assets/ui/status_sangria.svg',
     image: 'assets/cards/card_bencao_guerra.png?v=29',
     desc: 'Ares: Causa 6 de dano e aplica 4 de Sangramento.',
     damage: 6,
     shield: 0,
-    applyStatus: { type: 'bleed', stacks: 4, icon: '🩸', name: 'Sangramento' },
+    applyStatus: { type: 'bleed', stacks: 4, icon: 'assets/ui/status_sangria.svg', name: 'Sangramento' },
     flavor: 'Agressividade pura para resolver qualquer disputa.'
   },
   bencao_velocidade: {
@@ -135,7 +135,7 @@ export const CARD_DATABASE = {
     type: 'blessing',
     element: 'speed',
     cost: 0,
-    icon: '🪽',
+    icon: 'assets/ui/icon_wing.svg',
     image: 'assets/cards/card_bencao_velocidade.png',
     desc: 'Hermes: Custo 0! Compra 2 cartas e concede 1 Ação.',
     damage: 0,
@@ -151,13 +151,13 @@ export const CARD_DATABASE = {
     element: 'lightning',
     vfxType: 'lightning',
     cost: 1,
-    icon: '⚡🪙',
+    icon: 'assets/ui/icon_dracma.svg',
     image: 'assets/cards/card_bencao_raio.png?v=29',
     desc: 'Causa 8 de dano, aplica 2 Choques e rende +15 Dracmas!',
     damage: 8,
     shield: 0,
     gainGold: 15,
-    applyStatus: { type: 'shock', stacks: 2, icon: '⚡', name: 'Choque' },
+    applyStatus: { type: 'shock', stacks: 2, icon: 'assets/ui/status_raio.svg', name: 'Choque' },
     flavor: 'Liquidez imediata com garantia olímpica.'
   },
   blindagem_olimpica: {
@@ -167,12 +167,12 @@ export const CARD_DATABASE = {
     element: 'fire',
     vfxType: 'fire',
     cost: 1,
-    icon: '🛡️🔥',
+    icon: 'assets/ui/icon_shield.svg',
     image: 'assets/cards/card_chamas_hefesto.png',
     desc: 'Gera 11 de Escudo e aplica 3 de Queimadura no inimigo.',
     damage: 0,
     shield: 11,
-    applyStatus: { type: 'burn', stacks: 3, icon: '🔥', name: 'Queimadura' },
+    applyStatus: { type: 'burn', stacks: 3, icon: 'assets/ui/status_fogo.svg', name: 'Queimadura' },
     flavor: 'Proteção patrimonial forjada no fogo.'
   },
 
@@ -182,7 +182,7 @@ export const CARD_DATABASE = {
     name: 'Formulário 9.999',
     type: 'curse',
     cost: 1,
-    icon: '📑',
+    icon: 'assets/ui/icon_scroll.svg',
     image: 'assets/cards/card_liminar_arcana.png',
     desc: 'BUROCRACIA! Causa 4 de dano no fim do turno se continuar na mão. Jogue para incinerar.',
     damage: 0,
@@ -200,12 +200,12 @@ export const FUSION_RECIPES = {
     type: 'fused',
     vfxType: 'fire',
     cost: 1,
-    icon: '🔥✨',
+    icon: 'assets/ui/status_fogo.svg',
     image: 'assets/cards/card_combustao_gourmet.png',
     desc: 'Causa 14 de dano de fogo e aplica 5 de Queimadura.',
     damage: 14,
     shield: 0,
-    applyStatus: { type: 'burn', stacks: 5, icon: '🔥', name: 'Queimadura' },
+    applyStatus: { type: 'burn', stacks: 5, icon: 'assets/ui/status_fogo.svg', name: 'Queimadura' },
     catchphrase: 'Flawless blend!'
   },
   'toque_aristocratico+bencao_raio': {
@@ -214,12 +214,12 @@ export const FUSION_RECIPES = {
     type: 'fused',
     vfxType: 'lightning',
     cost: 1,
-    icon: '⚡✨',
+    icon: 'assets/ui/status_raio.svg',
     image: 'assets/cards/card_estalo_zeus.png',
     desc: 'Causa 15 de dano e eletrifica com 3 Choques.',
     damage: 15,
     shield: 0,
-    applyStatus: { type: 'shock', stacks: 3, icon: '⚡', name: 'Choque' },
+    applyStatus: { type: 'shock', stacks: 3, icon: 'assets/ui/status_raio.svg', name: 'Choque' },
     catchphrase: 'Flawless!'
   },
   'toque_aristocratico+bencao_guerra': {
@@ -228,12 +228,12 @@ export const FUSION_RECIPES = {
     type: 'fused',
     vfxType: 'blood',
     cost: 1,
-    icon: '⚔️✨',
+    icon: 'assets/ui/status_sangria.svg',
     image: 'assets/cards/card_bencao_guerra.png?v=29',
     desc: 'Causa 16 de dano crítico e 5 Sangramento!',
     damage: 16,
     shield: 0,
-    applyStatus: { type: 'bleed', stacks: 5, icon: '🩸', name: 'Sangramento' },
+    applyStatus: { type: 'bleed', stacks: 5, icon: 'assets/ui/status_sangria.svg', name: 'Sangramento' },
     catchphrase: 'Flawless!'
   },
   'liminar_judicial+bencao_raio': {
@@ -242,12 +242,12 @@ export const FUSION_RECIPES = {
     type: 'fused',
     vfxType: 'lightning',
     cost: 1,
-    icon: '⚡📜',
+    icon: 'assets/ui/status_raio.svg',
     image: 'assets/cards/card_estalo_zeus.png',
     desc: 'Gera 14 de armadura, causa 8 de dano e 2 Choques.',
     damage: 8,
     shield: 14,
-    applyStatus: { type: 'shock', stacks: 2, icon: '⚡', name: 'Choque' },
+    applyStatus: { type: 'shock', stacks: 2, icon: 'assets/ui/status_raio.svg', name: 'Choque' },
     catchphrase: 'Flawless!'
   },
   'corte_custos+bencao_velocidade': {
@@ -255,7 +255,7 @@ export const FUSION_RECIPES = {
     name: 'Estocada Alada',
     type: 'fused',
     cost: 0,
-    icon: '🪽🗡️',
+    icon: 'assets/ui/icon_wing.svg',
     image: 'assets/cards/card_bencao_velocidade.png',
     desc: 'Custo 0! Causa 10 de dano, compra 2 cartas e +1 Ação!',
     damage: 10,
@@ -270,13 +270,13 @@ export const FUSION_RECIPES = {
     type: 'fused',
     vfxType: 'blood',
     cost: 1,
-    icon: '⚔️⚖️',
+    icon: 'assets/ui/status_sangria.svg',
     image: 'assets/cards/card_bencao_guerra.png?v=29',
     desc: 'Causa 14 de dano + dobro do dano sofrido + 5 de Sangramento!',
     damage: 14,
     isRetaliation: true,
     shield: 0,
-    applyStatus: { type: 'bleed', stacks: 5, icon: '🩸', name: 'Sangramento' },
+    applyStatus: { type: 'bleed', stacks: 5, icon: 'assets/ui/status_sangria.svg', name: 'Sangramento' },
     catchphrase: 'Flawless!'
   }
 };
@@ -319,7 +319,7 @@ export function resolveCardDefinition(cardKey) {
         type: 'fused',
         vfxType: blessing.vfxType || other.vfxType || 'lightning',
         cost: Math.min(1, Math.max(c1.cost, c2.cost)),
-        icon: `${blessing.icon}${other.icon}`,
+        icon: blessing.icon || other.icon,
         image: blessing.image || other.image,
         desc: `Sinergia M&A: ${parts.join(', ')}.`,
         damage: dmg,
@@ -342,53 +342,53 @@ export const RELIC_DATABASE = {
   algoritmo_hermes: {
     id: 'algoritmo_hermes',
     name: 'Algoritmo HFT',
-    icon: '📈',
+    art: 'assets/ui/archetype_quant.png',
     desc: 'Tese Quant: No Turno 1 de cada câmara, ganha +1 Ação e compra +1 Carta.'
   },
   alavancagem_ares: {
     id: 'alavancagem_ares',
     name: 'Alavancagem Hostil',
-    icon: '🦅',
+    art: 'assets/ui/archetype_pe.png',
     desc: 'Private Equity: +3 de Dano em inimigos com status e +4 Dano se Louis tiver ≤50% HP.'
   },
   blindagem_patrimonial: {
     id: 'blindagem_patrimonial',
     name: 'Holding Blindada',
-    icon: '🏛️',
-    desc: 'Hedge Fund: Retém 50% do Escudo entre turnos e cartas de Escudo geram +3 🛡️.'
+    art: 'assets/ui/archetype_hedge.png',
+    desc: 'Hedge Fund: Retém 50% do Escudo entre turnos e cartas de Escudo geram +3 de Escudo.'
   },
   patek_olimpico: {
     id: 'patek_olimpico',
     name: 'Patek Olímpico',
-    icon: '⌚',
+    art: 'assets/ui/relic_patek.png',
     cost: 75,
     desc: 'O primeiro ataque de cada turno causa +4 de Dano e concede +3 de Escudo.'
   },
   cartao_centurion: {
     id: 'cartao_centurion',
     name: 'Amex Obsidiana',
-    icon: '💳',
+    art: 'assets/ui/relic_centurion.png',
     cost: 75,
     desc: 'Juros Compostos: Seus ataques causam +1 de Dano extra para cada 35 Dracmas que você possui.'
   },
   trituradora_vip: {
     id: 'trituradora_vip',
     name: 'Compliance VIP',
-    icon: '📎',
+    art: 'assets/ui/relic_compliance.png',
     cost: 65,
     desc: 'Imune ao dano de Formulário 9.999. Despachar Formulários custa 0 e compra 1 carta!'
   },
   safra_1800: {
     id: 'safra_1800',
     name: 'Bordeaux 1800',
-    icon: '🍷',
+    art: 'assets/ui/relic_bordeaux.png',
     cost: 65,
-    desc: 'Ao vencer uma Câmara, recupera +10 HP automaticamente e inicia lutas com +8 🛡️.'
+    desc: 'Ao vencer uma Câmara, recupera +10 HP automaticamente e inicia lutas com +8 de Escudo.'
   },
   fusao_perpetua: {
     id: 'fusao_perpetua',
     name: 'Contrato M&A',
-    icon: '💎',
+    art: 'assets/ui/relic_contract.png',
     cost: 90,
     desc: 'Cartas Fundidas NÃO se desfazem ao ir para o descarte nesta luta e causam +4 Dano!'
   }
@@ -399,7 +399,7 @@ export const ARCHETYPES = {
   quant: {
     id: 'quant',
     name: 'Fundo Quantitativo (HFT)',
-    icon: '📈⚡',
+    art: 'assets/ui/archetype_quant.png',
     subtitle: 'Velocidade & Choques em Cadeia (Hermes / Zeus)',
     relic: 'algoritmo_hermes',
     deck: [
@@ -416,7 +416,7 @@ export const ARCHETYPES = {
   private_equity: {
     id: 'private_equity',
     name: 'Private Equity Hostil',
-    icon: '🦅🔥',
+    art: 'assets/ui/archetype_pe.png',
     subtitle: 'Dano Agressivo, Sangria & Queimadura (Ares / Hefesto)',
     relic: 'alavancagem_ares',
     deck: [
@@ -433,7 +433,7 @@ export const ARCHETYPES = {
   hedge_fund: {
     id: 'hedge_fund',
     name: 'Holding Blindada (Hedge)',
-    icon: '🏛️🛡️',
+    art: 'assets/ui/archetype_hedge.png',
     subtitle: 'Retenção de Escudo & Contragolpe (Atena / Ares)',
     relic: 'blindagem_patrimonial',
     deck: [
@@ -485,40 +485,40 @@ const LUIZ_QUOTES = {
   ]
 };
 
-// BALÕES DE GRITO CÔMICO INSTANTÂNEO (Pop-ups de Reação Cartoon)
+// BALÕES DE GRITO CÔMICO INSTANTÂNEO (Pop-ups de Reação Cartoon — Sem Emojis)
 const COMIC_CALLOUTS = {
   attack: [
-    'TOQUE DE MIDAS! ✨',
-    'ACEITA DÉBITO?! 💳',
-    'FLAWLESS! 🪙',
-    'CHIQUE DEMAIS! 🍷',
-    'COM JUROS! ⚡'
+    'TOQUE DE MIDAS!',
+    'ACEITA DÉBITO?!',
+    'FLAWLESS!',
+    'CHIQUE DEMAIS!',
+    'COM JUROS!'
   ],
   hurt: [
-    'MEU LINHO EGÍPCIO! 😱',
-    'PROCESSO EM 3 INSTÂNCIAS! ⚖️',
-    'VOCÊ SABE QUEM É MEU PAI?! 📢',
-    'CUSTOU 50 MIL DRACMAS! 🍷',
-    'QUE SELVAGERIA! 💔',
-    'AGRESSÃO AO PATRIMÔNIO! 🏛️'
+    'MEU LINHO EGÍPCIO!',
+    'PROCESSO EM 3 INSTÂNCIAS!',
+    'VOCÊ SABE QUEM É MEU PAI?!',
+    'CUSTOU 50 MIL DRACMAS!',
+    'QUE SELVAGERIA!',
+    'AGRESSÃO AO PATRIMÔNIO!'
   ]
 };
 
-// BALÕES CÔMICOS DE REAÇÃO DO INIMIGO (Estagiário Preguiçoso)
+// BALÕES CÔMICOS DE REAÇÃO DO INIMIGO (Estagiário Preguiçoso — Sem Emojis)
 const ENEMY_COMIC_CALLOUTS = {
   attack: [
-    'HORA EXTRA NÃO! ☕',
-    'SEM ADICIONAL NOTURNO?! 📜',
-    'PROTOCOLO REJEITADO! ❌',
-    'CAFÉ TÓXICO FERVENDO! 💥',
-    'CADÊ O REAJUSTE?! 📢'
+    'HORA EXTRA NÃO!',
+    'SEM ADICIONAL NOTURNO?!',
+    'PROTOCOLO REJEITADO!',
+    'CAFÉ TÓXICO FERVENDO!',
+    'CADÊ O REAJUSTE?!'
   ],
   hurt: [
-    'MEUS FORMULÁRIOS! 😱',
-    'CARÊNCIA DO PLANO! 📄',
-    'CADÊ O SINDICATO?! 📢',
-    'BURNOUT TOTAL! 💀',
-    'ATÉ AMANHÃ ÀS 8H! 💔'
+    'MEUS FORMULÁRIOS!',
+    'CARÊNCIA DO PLANO!',
+    'CADÊ O SINDICATO?!',
+    'BURNOUT TOTAL!',
+    'ATÉ AMANHÃ ÀS 8H!'
   ]
 };
 
@@ -527,7 +527,7 @@ const DUNGEON_ENEMIES = [
   {
     luizName: 'O Estagiário Preguiçoso',
     realName: 'Sombra de Aqueronte',
-    avatar: '👤',
+    avatar: 'assets/ui/icon_skull.svg',
     portrait: 'assets/ui/map_node_1.png?v=30',
     image: 'assets/characters/estagiario_fullbody.png',
     background: 'assets/backgrounds/ground_horizon_planted.png',
@@ -536,22 +536,23 @@ const DUNGEON_ENEMIES = [
     maxHp: 46,
     hp: 46,
     passiveId: 'corpo_mole',
-    passiveText: '☕ Corpo Mole: Ganha +3 🛡️ ao sofrer ataque direto',
+    passiveIcon: 'assets/ui/icon_shield.svg',
+    passiveText: 'Corpo Mole: Ganha +3 de Escudo ao sofrer ataque direto',
     callouts: {
-      attack: ['HORA EXTRA NÃO! ☕', 'SEM ADICIONAL NOTURNO?! 📜', 'CAFÉ TÓXICO FERVENDO! 💥', 'TOMA PAPELADA! 📑'],
-      hurt: ['MEUS FORMULÁRIOS! 😱', 'CARÊNCIA DO PLANO! 📄', 'CADÊ O SINDICATO?! 📢', 'BURNOUT TOTAL! 💀']
+      attack: ['HORA EXTRA NÃO!', 'SEM ADICIONAL NOTURNO?!', 'CAFÉ TÓXICO FERVENDO!', 'TOMA PAPELADA!'],
+      hurt: ['MEUS FORMULÁRIOS!', 'CARÊNCIA DO PLANO!', 'CADÊ O SINDICATO?!', 'BURNOUT TOTAL!']
     },
     intents: [
-      { type: 'attack', value: 9, icon: '🗡️', desc: '9 Dano (Café Tóxico)' },
-      { type: 'curse_attack', value: 7, curses: 1, icon: '📑', desc: '7 Dano + 1 Formulário 9.999' },
-      { type: 'shield', value: 10, icon: '🛡️', desc: '+10 Escudo do Desânimo' },
-      { type: 'attack', value: 13, icon: '💥', desc: '13 Dano (Colapso de Burnout)' }
+      { type: 'attack', value: 9, icon: 'assets/ui/icon_sword.svg', desc: '9 Dano (Café Tóxico)' },
+      { type: 'curse_attack', value: 7, curses: 1, icon: 'assets/ui/icon_scroll.svg', desc: '7 Dano + 1 Formulário 9.999' },
+      { type: 'shield', value: 10, icon: 'assets/ui/icon_shield.svg', desc: '+10 Escudo do Desânimo' },
+      { type: 'attack', value: 13, icon: 'assets/ui/icon_burst.svg', desc: '13 Dano (Colapso de Burnout)' }
     ]
   },
   {
     luizName: 'A Recepcionista Histérica',
     realName: 'Fúria Sentinela do Limbo',
-    avatar: '🦅',
+    avatar: 'assets/ui/icon_scroll.svg',
     portrait: 'assets/ui/map_node_2.png?v=30',
     image: 'assets/characters/recepcionista_fullbody.png?v=30',
     background: 'assets/backgrounds/underworld_arena_staircase.jpg',
@@ -561,21 +562,22 @@ const DUNGEON_ENEMIES = [
     hp: 64,
     initialShield: 8,
     passiveId: 'burocracia_histerica',
-    passiveText: '📑 Senha 9.999: Embaralha Burocracia no seu Deck!',
+    passiveIcon: 'assets/ui/icon_scroll.svg',
+    passiveText: 'Senha 9.999: Embaralha Burocracia no seu Deck!',
     callouts: {
-      attack: ['SENHA 9.999! 📢', 'SEM AGENDAMENTO! 🔥', 'FALTOU CARIMBO! 💢', 'PREENCHA A VIA AZUL! 📜'],
-      hurt: ['MEU BALCÃO! 😱', 'PROCESSO EXTRAVIADO! 📄', 'DESACATO NO GUICHÊ! 💢', 'SISTEMA FORA DO AR! 💥']
+      attack: ['SENHA 9.999!', 'SEM AGENDAMENTO!', 'FALTOU CARIMBO!', 'PREENCHA A VIA AZUL!'],
+      hurt: ['MEU BALCÃO!', 'PROCESSO EXTRAVIADO!', 'DESACATO NO GUICHÊ!', 'SISTEMA FORA DO AR!']
     },
     intents: [
-      { type: 'curse_attack', value: 11, curses: 1, icon: '📑', desc: '11 Dano + 1 Formulário 9.999' },
-      { type: 'attack', value: 15, icon: '💥', desc: '15 Dano (Grito Estridente)' },
-      { type: 'shield_curse', value: 12, curses: 1, icon: '🛡️📑', desc: '+12 🛡️ e +1 Formulário no Deck' }
+      { type: 'curse_attack', value: 11, curses: 1, icon: 'assets/ui/icon_scroll.svg', desc: '11 Dano + 1 Formulário 9.999' },
+      { type: 'attack', value: 15, icon: 'assets/ui/icon_burst.svg', desc: '15 Dano (Grito Estridente)' },
+      { type: 'shield_curse', value: 12, curses: 1, icon: 'assets/ui/icon_shield.svg', desc: '+12 Escudo e +1 Formulário no Deck' }
     ]
   },
   {
     luizName: 'O Segurança Truculento',
     realName: 'Gárgula de Pedra do Cócito',
-    avatar: '🗿',
+    avatar: 'assets/ui/icon_gargoyle.svg',
     portrait: 'assets/ui/map_node_3.png?v=30',
     image: 'assets/characters/gargula_fullbody.png?v=30',
     background: 'assets/backgrounds/underworld_arena_paths.jpg',
@@ -586,21 +588,22 @@ const DUNGEON_ENEMIES = [
     initialShield: 12,
     thorns: 3,
     passiveId: 'pele_granito',
-    passiveText: '🗿 Pele de Granito: Reflete 3 de Dano em ataques diretos!',
+    passiveIcon: 'assets/ui/icon_gargoyle.svg',
+    passiveText: 'Pele de Granito: Reflete 3 de Dano em ataques diretos!',
     callouts: {
-      attack: ['ACESSO NEGADO! 🗿', 'REVISTA OBRIGATÓRIA! 🛡️', 'PROTOCOLO ABSOLUTO! ❄️', 'FORA DA CATRACA! 💥'],
-      hurt: ['RACHARAM MEU GRANITO! 💥', 'MÁRMORE TRINCADO! 😱', 'CÓDIGO VERMELHO! 🚨', 'CHAMEM O REFORÇO! 🛡️']
+      attack: ['ACESSO NEGADO!', 'REVISTA OBRIGATÓRIA!', 'PROTOCOLO ABSOLUTO!', 'FORA DA CATRACA!'],
+      hurt: ['RACHARAM MEU GRANITO!', 'MÁRMORE TRINCADO!', 'CÓDIGO VERMELHO!', 'CHAMEM O REFORÇO!']
     },
     intents: [
-      { type: 'attack', value: 14, icon: '🗡️', desc: '14 Dano (Empurrão Bruto)' },
-      { type: 'shield', value: 16, icon: '🛡️', desc: '+16 Muralha do Cócito' },
-      { type: 'attack', value: 19, icon: '💥', desc: '19 Dano Esmagador' }
+      { type: 'attack', value: 14, icon: 'assets/ui/icon_sword.svg', desc: '14 Dano (Empurrão Bruto)' },
+      { type: 'shield', value: 16, icon: 'assets/ui/icon_shield.svg', desc: '+16 Muralha do Cócito' },
+      { type: 'attack', value: 19, icon: 'assets/ui/icon_burst.svg', desc: '19 Dano Esmagador' }
     ]
   },
   {
     luizName: 'O Diretor Inflexível',
     realName: 'Rei Minos, o Juiz Supremo',
-    avatar: '👑',
+    avatar: 'assets/ui/icon_scales.svg',
     portrait: 'assets/ui/map_node_4.png?v=31',
     image: 'assets/characters/minos_fullbody.png?v=31',
     background: 'assets/backgrounds/underworld_arena.jpg',
@@ -610,21 +613,22 @@ const DUNGEON_ENEMIES = [
     hp: 102,
     initialShield: 10,
     passiveId: 'juros_mora',
-    passiveText: '⚖️ Juros de Mora: Ganha +2 de Força a cada turno!',
+    passiveIcon: 'assets/ui/icon_scales.svg',
+    passiveText: 'Juros de Mora: Ganha +2 de Força a cada turno!',
     callouts: {
-      attack: ['RECURSO INDEFERIDO! ⚖️', 'DESACATO À CORTE! 🔨', 'LITIGÂNCIA DE MÁ-FÉ! 📜', 'SENTENÇA IMEDIATA! 💥'],
-      hurt: ['OBJEÇÃO NEGADA! 💢', 'MINHA TOGA IMPERIAL! 😱', 'QUEBRA DE DECORO! ⚖️', 'ANULEM ESSA PROVA! 📜']
+      attack: ['RECURSO INDEFERIDO!', 'DESACATO À CORTE!', 'LITIGÂNCIA DE MÁ-FÉ!', 'SENTENÇA IMEDIATA!'],
+      hurt: ['OBJEÇÃO NEGADA!', 'MINHA TOGA IMPERIAL!', 'QUEBRA DE DECORO!', 'ANULEM ESSA PROVA!']
     },
     intents: [
-      { type: 'curse_attack', value: 16, curses: 1, icon: '⚖️📑', desc: '16 Dano + Sentença (Formulário)' },
-      { type: 'shield', value: 18, icon: '🛡️', desc: '+18 Jurisprudência Blindada' },
-      { type: 'attack', value: 22, icon: '💥', desc: '22 Dano (O Malhete do Juízo)' }
+      { type: 'curse_attack', value: 16, curses: 1, icon: 'assets/ui/icon_scales.svg', desc: '16 Dano + Sentença (Formulário)' },
+      { type: 'shield', value: 18, icon: 'assets/ui/icon_shield.svg', desc: '+18 Jurisprudência Blindada' },
+      { type: 'attack', value: 22, icon: 'assets/ui/icon_burst.svg', desc: '22 Dano (O Malhete do Juízo)' }
     ]
   },
   {
     luizName: 'O Lorde e CEO do Submundo',
     realName: 'Hades, o Rei do Tártaro',
-    avatar: '🔱',
+    avatar: 'assets/ui/icon_bident.svg',
     portrait: 'assets/ui/map_node_5.png?v=31',
     image: 'assets/characters/hades_fullbody.png?v=31',
     background: 'assets/backgrounds/underworld_arena.jpg',
@@ -634,16 +638,17 @@ const DUNGEON_ENEMIES = [
     hp: 140,
     initialShield: 15,
     passiveId: 'monopolio_tartaro',
-    passiveText: '🔱 Monopólio: +2 Força/turno e Fase 2 com 50% HP!',
+    passiveIcon: 'assets/ui/icon_bident.svg',
+    passiveText: 'Monopólio: +2 Força/turno e Fase 2 com 50% HP!',
     callouts: {
-      attack: ['ESTORNO NEGADO! 🔱', 'DEMISSÃO SUMÁRIA! 🔥', 'EU SOU O CONSELHO! 👑', 'LIQUIDAÇÃO DE ALMA! 💥'],
-      hurt: ['MEU BALANÇO ANUAL! 😱', 'QUEBRA DE CONTRATO?! 🔥', 'INSOLÊNCIA MORTAL! 💢', 'MEU FUNDO SOBERANO! 🔱']
+      attack: ['ESTORNO NEGADO!', 'DEMISSÃO SUMÁRIA!', 'EU SOU O CONSELHO!', 'LIQUIDAÇÃO DE ALMA!'],
+      hurt: ['MEU BALANÇO ANUAL!', 'QUEBRA DE CONTRATO?!', 'INSOLÊNCIA MORTAL!', 'MEU FUNDO SOBERANO!']
     },
     intents: [
-      { type: 'attack', value: 19, icon: '🔱', desc: '19 Dano (Bidente Sombrio)' },
-      { type: 'curse_attack', value: 17, curses: 2, icon: '🔥📑', desc: '17 Dano + 2 Passivos (Formulários)' },
-      { type: 'shield', value: 22, icon: '🛡️', desc: '+22 Blindagem Soberana' },
-      { type: 'attack', value: 26, icon: '💥', desc: '26 Dano (Liquidação de Alma)' }
+      { type: 'attack', value: 19, icon: 'assets/ui/icon_bident.svg', desc: '19 Dano (Bidente Sombrio)' },
+      { type: 'curse_attack', value: 17, curses: 2, icon: 'assets/ui/icon_scroll.svg', desc: '17 Dano + 2 Passivos (Formulários)' },
+      { type: 'shield', value: 22, icon: 'assets/ui/icon_shield.svg', desc: '+22 Blindagem Soberana' },
+      { type: 'attack', value: 26, icon: 'assets/ui/icon_burst.svg', desc: '26 Dano (Liquidação de Alma)' }
     ]
   }
 ];
@@ -713,6 +718,7 @@ class GameState {
       shield: data.initialShield || 0,
       thorns: data.thorns || 0,
       passiveId: data.passiveId || null,
+      passiveIcon: data.passiveIcon || 'assets/ui/icon_scroll.svg',
       passiveText: data.passiveText || '',
       bonusDamage: 0,
       phase2Triggered: false,
@@ -726,6 +732,7 @@ class GameState {
   init() {
     this.turnNumber = 1;
     this.attacksPlayedThisTurn = 0;
+    this.isFusing = false;
     this.player.shield = this.hasRelic('safra_1800') ? 8 : 0;
     this.drawPile = [...this.deck].sort(() => Math.random() - 0.5);
     this.discardPile = [];
@@ -745,7 +752,7 @@ class GameState {
       const cardEl = document.createElement('div');
       cardEl.className = 'door-card';
       cardEl.innerHTML = `
-        <div class="door-icon">${arch.icon}</div>
+        <div class="door-icon"><img src="${arch.art}" class="door-art-img" alt="${arch.name}"></div>
         <div class="door-info">
           <strong>${arch.name}</strong>
           <small style="color:#ffd700;display:block;margin-bottom:2px;">${arch.subtitle}</small>
@@ -776,6 +783,7 @@ class GameState {
     this.enemyIndex = 0;
     this.isVictoryHandled = false;
     this.isVictoryInProgress = false;
+    this.isFusing = false;
     this.enemy = this.createEnemy(0);
 
     const modal = document.getElementById('archetype-modal');
@@ -821,6 +829,7 @@ class GameState {
       this.enemy.statuses.burn = Math.max(0, this.enemy.statuses.burn - 1);
       if (this.enemy.statuses.burn === 0) delete this.enemy.statuses.burn;
       if (this.enemy.hp <= 0) {
+        this.updateUI();
         this.handleVictory();
         return;
       }
@@ -855,12 +864,14 @@ class GameState {
       const [k1, k2] = cardKey.split('+');
       if (CARD_DATABASE[k1]) this.discardPile.push(k1);
       if (CARD_DATABASE[k2]) this.discardPile.push(k2);
-    } else {
+    } else if (cardKey) {
       this.discardPile.push(cardKey);
     }
   }
 
   playCard(index) {
+    if (this.isVictoryHandled || this.isVictoryInProgress || this.isFusing || this.enemy.hp <= 0 || this.player.hp <= 0) return;
+
     const cardKey = this.hand[index];
     const card = resolveCardDefinition(cardKey);
     if (!card) return;
@@ -880,7 +891,7 @@ class GameState {
     // Tratamento Especial: Despachar Carta de Burocracia (Formulário 9.999)
     if (card.type === 'curse') {
       const playerEl = document.getElementById('player-bust-frame');
-      this.spawnFloatingText(playerEl, '📑 INCINERADO!', '#ffd700');
+      this.spawnFloatingText(playerEl, 'INCINERADO!', '#ffd700', 'assets/ui/icon_scroll.svg');
       this.hand.splice(index, 1);
       if (this.hasRelic('trituradora_vip')) {
         this.drawCards(1);
@@ -941,7 +952,7 @@ class GameState {
       const finalShield = card.shield + bonusShield;
       this.player.shield += finalShield;
       const playerEl = document.getElementById('player-bust-frame');
-      this.spawnFloatingText(playerEl, `+${finalShield} 🛡️`, '#70a1ff');
+      this.spawnFloatingText(playerEl, `+${finalShield}`, '#70a1ff', 'assets/ui/icon_shield.svg');
     }
 
     if (totalDmg > 0) {
@@ -954,7 +965,7 @@ class GameState {
     if (card.gainGold) {
       this.player.gold += card.gainGold;
       const playerEl = document.getElementById('player-bust-frame');
-      this.spawnFloatingText(playerEl, `+${card.gainGold} 🪙`, '#ffd700');
+      this.spawnFloatingText(playerEl, `+${card.gainGold}`, '#ffd700', 'assets/ui/icon_dracma.svg');
     }
 
     if (card.drawCards) {
@@ -979,7 +990,7 @@ class GameState {
     }
 
     if (card.cancelEnemyTurn) {
-      this.enemy.intent = { type: 'stun', value: 0, icon: '❄️', desc: 'Ação Cancelada!' };
+      this.enemy.intent = { type: 'stun', value: 0, icon: 'assets/ui/status_gelo.svg', desc: 'Ação Cancelada!' };
     }
 
     this.hand.splice(index, 1);
@@ -1055,6 +1066,8 @@ class GameState {
   }
 
   fuseCards(indexSource, indexTarget) {
+    if (this.isVictoryHandled || this.isVictoryInProgress || this.isFusing || this.enemy.hp <= 0) return false;
+
     const sourceKey = this.hand[indexSource];
     const targetKey = this.hand[indexTarget];
 
@@ -1072,6 +1085,8 @@ class GameState {
       this.speak(this.getRandomQuote(LUIZ_QUOTES.fuseFail));
       return false;
     }
+
+    this.isFusing = true;
 
     const allCardEls = Array.from(document.querySelectorAll('.game-card'));
     const sourceEl = allCardEls.find(el => parseInt(el.dataset.index) === indexSource);
@@ -1104,6 +1119,7 @@ class GameState {
 
       const fusedKey = recipeKey1 in FUSION_RECIPES ? recipeKey1 : recipeKey2;
       this.hand.push(fusedKey);
+      this.isFusing = false;
 
       this.showFusionBanner(recipe);
       this.speak(recipe.catchphrase || 'Flawless! Essa fusão tem o selo de qualidade Beznoir.');
@@ -1113,7 +1129,7 @@ class GameState {
     return true;
   }
 
-  spawnFloatingText(targetEl, text, color = '#ff4757') {
+  spawnFloatingText(targetEl, text, color = '#ff4757', iconSrc = null) {
     if (!targetEl) return;
     const rect = targetEl.getBoundingClientRect();
     const arena = document.getElementById('battle-arena');
@@ -1122,7 +1138,11 @@ class GameState {
 
     const floatEl = document.createElement('div');
     floatEl.className = 'floating-text';
-    floatEl.textContent = text;
+    if (iconSrc) {
+      floatEl.innerHTML = `<img src="${iconSrc}" class="floating-art-icon" alt=""> <span>${text}</span>`;
+    } else {
+      floatEl.textContent = text;
+    }
     floatEl.style.color = color;
 
     const left = (rect.left + rect.width / 2) - arenaRect.left;
@@ -1243,19 +1263,19 @@ class GameState {
     }, 900);
   }
 
-  damagePlayer(rawDmg, customLabel = null) {
+  damagePlayer(rawDmg, customLabel = null, customIcon = null) {
     let unmitigatedDmg = rawDmg;
     const playerEl = document.getElementById('player-bust-frame');
     if (this.player.shield > 0) {
       if (unmitigatedDmg <= this.player.shield) {
         this.player.shield -= unmitigatedDmg;
-        this.spawnFloatingText(playerEl, `🛡️ -${unmitigatedDmg}`, '#70a1ff');
+        this.spawnFloatingText(playerEl, `-${unmitigatedDmg}`, '#70a1ff', 'assets/ui/icon_shield.svg');
         unmitigatedDmg = 0;
       } else {
         const blocked = this.player.shield;
         unmitigatedDmg -= this.player.shield;
         this.player.shield = 0;
-        this.spawnFloatingText(playerEl, `🛡️ -${blocked}`, '#70a1ff');
+        this.spawnFloatingText(playerEl, `-${blocked}`, '#70a1ff', 'assets/ui/icon_shield.svg');
       }
     }
     this.player.hp = Math.max(0, this.player.hp - unmitigatedDmg);
@@ -1265,7 +1285,7 @@ class GameState {
       sfx.hurt();
       this.playPlayerHurt();
       if (playerEl) {
-        this.spawnFloatingText(playerEl, customLabel ? `${customLabel} -${unmitigatedDmg}` : `-${unmitigatedDmg}`, '#ff4757');
+        this.spawnFloatingText(playerEl, customLabel ? `${customLabel} -${unmitigatedDmg}` : `-${unmitigatedDmg}`, '#ff4757', customIcon);
       }
     }
     if (this.player.hp <= 0) {
@@ -1279,13 +1299,13 @@ class GameState {
     if (this.enemy.shield > 0) {
       if (finalDmg <= this.enemy.shield) {
         this.enemy.shield -= finalDmg;
-        this.spawnFloatingText(enemyEl, `🛡️ -${finalDmg}`, '#70a1ff');
+        this.spawnFloatingText(enemyEl, `-${finalDmg}`, '#70a1ff', 'assets/ui/icon_shield.svg');
         finalDmg = 0;
       } else {
         const blocked = this.enemy.shield;
         finalDmg -= this.enemy.shield;
         this.enemy.shield = 0;
-        this.spawnFloatingText(enemyEl, `🛡️ -${blocked}`, '#70a1ff');
+        this.spawnFloatingText(enemyEl, `-${blocked}`, '#70a1ff', 'assets/ui/icon_shield.svg');
       }
     }
     this.enemy.hp = Math.max(0, this.enemy.hp - finalDmg);
@@ -1302,11 +1322,11 @@ class GameState {
       // Câmara I (Estagiário): Ganha +3 Escudo de Corpo Mole após sofrer ataque
       if (this.enemy.passiveId === 'corpo_mole') {
         this.enemy.shield += 3;
-        this.spawnFloatingText(enemyEl, '+3 🛡️ Corpo Mole', '#70a1ff');
+        this.spawnFloatingText(enemyEl, '+3 Corpo Mole', '#70a1ff', 'assets/ui/icon_shield.svg');
       }
       // Câmara III (Gárgula): Pele de Granito reflete 3 de Dano em Louis!
       if (this.enemy.thorns > 0) {
-        this.damagePlayer(this.enemy.thorns, '🗿 Espinhos');
+        this.damagePlayer(this.enemy.thorns, 'Espinhos', 'assets/ui/icon_gargoyle.svg');
       }
     }
 
@@ -1315,12 +1335,13 @@ class GameState {
       this.enemy.phase2Triggered = true;
       this.enemy.shield += 22;
       this.enemy.bonusDamage += 4;
-      this.enemy.passiveText = '🔥 FASE 2: LIQUIDAÇÃO TOTAL (+6 Força!)';
+      this.enemy.passiveIcon = 'assets/ui/status_fogo.svg';
+      this.enemy.passiveText = 'FASE 2: LIQUIDAÇÃO TOTAL (+6 Força!)';
       this.discardPile.push('protocolo_pendente');
-      this.spawnFloatingText(enemyEl, '🔱 FASE 2: +22 🛡️!', '#ffd700');
+      this.spawnFloatingText(enemyEl, 'FASE 2: +22 ESCUDO!', '#ffd700', 'assets/ui/icon_bident.svg');
       const calloutEl = document.getElementById('enemy-comic-callout');
       if (calloutEl) {
-        calloutEl.textContent = 'LIQUIDAÇÃO HOSTIL ATIVADA! 🔱🔥';
+        calloutEl.textContent = 'LIQUIDAÇÃO HOSTIL ATIVADA!';
         calloutEl.classList.remove('hidden');
       }
     }
@@ -1335,13 +1356,15 @@ class GameState {
   }
 
   endTurn() {
+    if (this.isVictoryHandled || this.isVictoryInProgress || this.isFusing || this.enemy.hp <= 0 || this.player.hp <= 0) return;
+
     this.player.lastDamageTaken = 0;
 
     // 1. Penalidade de Burocracia: Formulários 9.999 que ficaram na mão causam 4 de dano cada!
     const cursesInHand = this.hand.filter(k => k === 'protocolo_pendente').length;
     if (cursesInHand > 0 && !this.hasRelic('trituradora_vip')) {
       const curseDmg = cursesInHand * 4;
-      this.damagePlayer(curseDmg, '📑 Multa');
+      this.damagePlayer(curseDmg, 'Multa', 'assets/ui/icon_scroll.svg');
       if (this.player.hp <= 0) return;
     }
 
@@ -1366,7 +1389,12 @@ class GameState {
         this.damageEnemy(bleedDmg, true, true);
         this.enemy.statuses.bleed = Math.max(0, this.enemy.statuses.bleed - 1);
         if (this.enemy.statuses.bleed === 0) delete this.enemy.statuses.bleed;
-        if (this.enemy.hp <= 0) return;
+        if (this.enemy.hp <= 0) {
+          this.hand.forEach(cardKey => this.pushCardToDiscard(cardKey));
+          this.hand = [];
+          this.updateUI();
+          return;
+        }
       }
 
       this.damagePlayer(dmg);
@@ -1381,25 +1409,25 @@ class GameState {
           this.discardPile.push('protocolo_pendente');
         }
         const playerEl = document.getElementById('player-bust-frame');
-        this.spawnFloatingText(playerEl, `+${this.enemy.intent.curses} 📑 Burocracia!`, '#ff6b81');
+        this.spawnFloatingText(playerEl, `+${this.enemy.intent.curses} Burocracia!`, '#ff6b81', 'assets/ui/icon_scroll.svg');
       }
     } else if (intentType === 'shield' || intentType === 'shield_curse') {
       this.enemy.shield += this.enemy.intent.value;
-      this.spawnFloatingText(enemyEl, `+${this.enemy.intent.value} 🛡️`, '#70a1ff');
+      this.spawnFloatingText(enemyEl, `+${this.enemy.intent.value}`, '#70a1ff', 'assets/ui/icon_shield.svg');
       if (intentType === 'shield_curse' && this.enemy.intent.curses) {
         for (let c = 0; c < this.enemy.intent.curses; c++) {
           this.drawPile.push('protocolo_pendente');
         }
         this.drawPile.sort(() => Math.random() - 0.5);
         const playerEl = document.getElementById('player-bust-frame');
-        this.spawnFloatingText(playerEl, `+${this.enemy.intent.curses} 📑 no Deck!`, '#ff6b81');
+        this.spawnFloatingText(playerEl, `+${this.enemy.intent.curses} no Deck!`, '#ff6b81', 'assets/ui/icon_scroll.svg');
       }
     }
 
     // 3. Escalada de Poder (Juros de Mora / Monopólio) de Minos e Hades no fim do turno
     if (this.enemy.passiveId === 'juros_mora' || this.enemy.passiveId === 'monopolio_tartaro') {
       this.enemy.bonusDamage = (this.enemy.bonusDamage || 0) + 2;
-      this.spawnFloatingText(enemyEl, '+2 ⚔️ Juros!', '#ffd700');
+      this.spawnFloatingText(enemyEl, '+2 Juros!', '#ffd700', 'assets/ui/icon_sword.svg');
     }
 
     // 4. Descarta a mão (desfazendo cartas fundidas de volta às originais, salvo Contrato M&A)
@@ -1422,8 +1450,8 @@ class GameState {
 
   rollEnemyIntent() {
     const list = this.enemy.intents || [
-      { type: 'attack', value: 8, icon: '🗡️', desc: '8 Dano' },
-      { type: 'shield', value: 10, icon: '🛡️', desc: '+10 Escudo' }
+      { type: 'attack', value: 8, icon: 'assets/ui/icon_sword.svg', desc: '8 Dano' },
+      { type: 'shield', value: 10, icon: 'assets/ui/icon_shield.svg', desc: '+10 Escudo' }
     ];
     const base = list[Math.floor(Math.random() * list.length)];
     const bonus = this.enemy.bonusDamage || 0;
@@ -1472,7 +1500,7 @@ class GameState {
           const btnText = document.getElementById('btn-restart-text') || document.getElementById('btn-restart');
           if (box) box.classList.add('victory-mode');
           if (tag) {
-            tag.textContent = '✨ AQUISIÇÃO HOSTIL CONCLUÍDA! ✨';
+            tag.innerHTML = `<img src="assets/ui/icon_spark.svg" class="inline-ui-art" alt=""> AQUISIÇÃO HOSTIL CONCLUÍDA! <img src="assets/ui/icon_spark.svg" class="inline-ui-art" alt="">`;
             tag.classList.add('victory-tag-style');
           }
           if (artWrap) artWrap.classList.remove('hidden');
@@ -1528,7 +1556,7 @@ class GameState {
 
     if (rerollBtn) {
       rerollBtn.disabled = this.player.gold < 25;
-      rerollBtn.textContent = `🎲 Subornar Olimpo: Trocar Ofertas (-25 🪙 | Saldo: ${this.player.gold} 🪙)`;
+      rerollBtn.innerHTML = `<img src="assets/ui/icon_dice.svg" class="inline-ui-art" alt=""> Subornar Olimpo: Trocar Ofertas (-25 <img src="assets/ui/icon_dracma.svg" class="inline-ui-art" alt=""> | Saldo: ${this.player.gold} <img src="assets/ui/icon_dracma.svg" class="inline-ui-art" alt="">)`;
       rerollBtn.onclick = () => {
         if (this.player.gold >= 25) {
           this.player.gold -= 25;
@@ -1561,8 +1589,8 @@ class GameState {
       cardEl.addEventListener('touchend', chooseBoon);
 
       const illustrationHtml = card.image
-        ? `<img src="${card.image}" class="card-art-img" alt="${card.name}" onerror="this.outerHTML='<span class=\\'card-art-fallback\\'>${card.icon}</span>'"/>`
-        : `<span class="card-art-fallback">${card.icon}</span>`;
+        ? `<img src="${card.image}" class="card-art-img" alt="${card.name}" onerror="this.src='${card.icon}'"/>`
+        : `<img src="${card.icon}" class="card-art-img" alt="${card.name}"/>`;
 
       cardEl.innerHTML = `
         <div class="card-art-container">
@@ -1605,9 +1633,10 @@ class GameState {
     const modal = document.getElementById('room-choice-modal');
     const doorsContainer = document.getElementById('doors-container');
     const statusBar = document.getElementById('room-choice-status-bar');
+    if (!modal || !doorsContainer) return;
 
     if (statusBar) {
-      statusBar.innerHTML = `❤️ <strong>${this.player.hp}/${this.player.maxHp} HP</strong> &nbsp;|&nbsp; 🪙 <strong>${this.player.gold} Dracmas</strong> &nbsp;|&nbsp; 📚 <strong>${this.deck.length} Cartas</strong>`;
+      statusBar.innerHTML = `<img src="assets/ui/icon_hp.svg" class="inline-ui-art" alt=""> <strong>${this.player.hp}/${this.player.maxHp} HP</strong> &nbsp;|&nbsp; <img src="assets/ui/icon_dracma.svg" class="inline-ui-art" alt=""> <strong>${this.player.gold} Dracmas</strong> &nbsp;|&nbsp; <img src="assets/ui/icon_deck.svg" class="inline-ui-art" alt=""> <strong>${this.deck.length} Cartas</strong>`;
     }
 
     // Seleciona uma Relíquia ainda não comprada para ofertar no Mercado de Caronte
@@ -1615,43 +1644,81 @@ class GameState {
       .filter(id => !this.hasRelic(id));
     const offeredRelicId = shopRelics.length > 0 ? shopRelics[this.roomNumber % shopRelics.length] : null;
     const offeredRelic = offeredRelicId ? RELIC_DATABASE[offeredRelicId] : null;
-    const canAffordRelic = offeredRelic && this.player.gold >= offeredRelic.cost;
-    const canAffordTrim = this.player.gold >= 50 && this.deck.length > 5;
+    const canAffordRelic = Boolean(offeredRelic && this.player.gold >= offeredRelic.cost);
+    const canAffordTrim = Boolean(this.player.gold >= 50 && this.deck.length > 5);
 
-    const relicHtml = offeredRelic ? `
-      <div class="door-card ${canAffordRelic ? '' : 'disabled-door'}" onclick="window.game.nextRoom('buy_relic', '${offeredRelic.id}')">
-        <div class="door-icon">${offeredRelic.icon}</div>
-        <div class="door-info">
-          <strong>Mercado de Caronte: ${offeredRelic.name} <span class="door-cost-tag">-${offeredRelic.cost} 🪙</span></strong>
-          <small>${offeredRelic.desc}</small>
-        </div>
-      </div>
-    ` : '';
+    const options = [
+      {
+        choice: 'heal',
+        param: null,
+        enabled: true,
+        art: 'assets/ui/relic_bordeaux.png',
+        title: `Lounge VIP do Estige <span class="door-cost-tag">GRÁTIS</span>`,
+        desc: `Descanso Executivo: Recupera <strong>+26 de HP</strong> antes da próxima Câmara.`
+      }
+    ];
 
-    doorsContainer.innerHTML = `
-      <div class="door-card" onclick="window.game.nextRoom('heal')">
-        <div class="door-icon">🍷</div>
+    if (offeredRelic) {
+      options.push({
+        choice: 'buy_relic',
+        param: offeredRelic.id,
+        enabled: canAffordRelic,
+        art: offeredRelic.art,
+        title: `Mercado de Caronte: ${offeredRelic.name} <span class="door-cost-tag">-${offeredRelic.cost} <img src="assets/ui/icon_dracma.svg" class="inline-ui-art" alt=""></span>`,
+        desc: offeredRelic.desc
+      });
+    }
+
+    options.push(
+      {
+        choice: 'trim_deck',
+        param: null,
+        enabled: canAffordTrim,
+        art: 'assets/ui/relic_compliance.png',
+        title: `Reestruturação Lean (Enxugar Deck) <span class="door-cost-tag">-50 <img src="assets/ui/icon_dracma.svg" class="inline-ui-art" alt=""></span>`,
+        desc: `Remove 1 carta básica do deck (compras mais rápidas) e ganha <strong>+10 HP Máx</strong>!`
+      },
+      {
+        choice: 'dividend_rush',
+        param: null,
+        enabled: true,
+        art: 'assets/ui/relic_centurion.png',
+        title: `Alavancagem Agressiva (Risco Alto) <span class="door-cost-tag">+65 <img src="assets/ui/icon_dracma.svg" class="inline-ui-art" alt=""></span>`,
+        desc: `Avança sem descansar, mas fatura <strong>+65 Dracmas</strong> imediatos em dividendos!`
+      }
+    );
+
+    doorsContainer.innerHTML = '';
+    let doorChosen = false;
+
+    options.forEach(opt => {
+      const cardEl = document.createElement('div');
+      cardEl.className = `door-card ${opt.enabled ? '' : 'disabled-door'}`;
+      cardEl.innerHTML = `
+        <div class="door-icon"><img src="${opt.art}" class="door-art-img" alt=""></div>
         <div class="door-info">
-          <strong>Lounge VIP do Estige <span class="door-cost-tag">GRÁTIS</span></strong>
-          <small>Descanso Executivo: Recupera <strong>+26 de HP</strong> antes da próxima Câmara.</small>
+          <strong>${opt.title}</strong>
+          <small>${opt.desc}</small>
         </div>
-      </div>
-      ${relicHtml}
-      <div class="door-card ${canAffordTrim ? '' : 'disabled-door'}" onclick="window.game.nextRoom('trim_deck')">
-        <div class="door-icon">🔥</div>
-        <div class="door-info">
-          <strong>Reestruturação Lean (Enxugar Deck) <span class="door-cost-tag">-50 🪙</span></strong>
-          <small>Remove 1 carta básica do deck (compras mais rápidas) e ganha <strong>+10 HP Máx</strong>!</small>
-        </div>
-      </div>
-      <div class="door-card" onclick="window.game.nextRoom('dividend_rush')">
-        <div class="door-icon">💰</div>
-        <div class="door-info">
-          <strong>Alavancagem Agressiva (Risco Alto) <span class="door-cost-tag">+65 🪙</span></strong>
-          <small>Avança sem descansar, mas fatura <strong>+65 Dracmas</strong> imediatos em dividendos!</small>
-        </div>
-      </div>
-    `;
+      `;
+
+      const handlePick = (e) => {
+        if (e && e.type === 'touchend') e.preventDefault();
+        if (doorChosen) return;
+        if (!opt.enabled) {
+          sfx.hurt();
+          this.speak('Dracmas insuficientes para essa operação! Escolha outra rota do Roadmap.');
+          return;
+        }
+        doorChosen = true;
+        this.nextRoom(opt.choice, opt.param);
+      };
+
+      cardEl.addEventListener('click', handlePick);
+      cardEl.addEventListener('touchend', handlePick);
+      doorsContainer.appendChild(cardEl);
+    });
+
     modal.classList.remove('hidden');
   }
 
@@ -1691,7 +1758,7 @@ class GameState {
       pin.style.left = chamberInfo.left;
     }
 
-    // Atualiza cartão de detalhes da câmara com Selo Grego Cinzelado (sem foguete emoji)
+    // Atualiza cartão de detalhes da câmara com Selo Grego Cinzelado
     const cardStatus = document.getElementById('map-card-status');
     const cardTitle = document.getElementById('map-card-title');
     const cardDesc = document.getElementById('map-card-desc');
@@ -1860,6 +1927,7 @@ class GameState {
     this.enemyIndex++;
     this.isVictoryHandled = false;
     this.isVictoryInProgress = false;
+    this.isFusing = false;
 
     this.enemy = this.createEnemy(this.enemyIndex);
     this.updateUI();
@@ -1891,13 +1959,15 @@ class GameState {
     const roomNameEl = document.getElementById('room-name');
     if (roomNameEl) roomNameEl.textContent = this.enemy.bgTitle;
 
-    // Reseta contadores de combate da nova câmara
+    // Inicializa imediatamente a mão e o turno da nova câmara para evitar condição de corrida
     this.turnNumber = 1;
     this.attacksPlayedThisTurn = 0;
+    this.isFusing = false;
     this.player.shield = this.hasRelic('safra_1800') ? 8 : 0;
-
-    // Atualiza o sprite e status do novo monstro
-    this.updateUI();
+    this.drawPile = [...this.deck].sort(() => Math.random() - 0.5);
+    this.discardPile = [];
+    this.hand = [];
+    this.startTurn();
 
     const station = document.getElementById('enemy-battle-station');
     if (station) {
@@ -1920,12 +1990,7 @@ class GameState {
         'Esse ambiente é totalmente hostil a investidores.',
         'Minha presença aqui é meramente protocolar.'
       ]));
-
-      this.drawPile = [...this.deck].sort(() => Math.random() - 0.5);
-      this.discardPile = [];
-      this.hand = [];
-      this.startTurn();
-    }, 1600);
+    }, 1350);
   }
 
   handleGameOver() {
@@ -1939,7 +2004,7 @@ class GameState {
       const btnText = document.getElementById('btn-restart-text') || document.getElementById('btn-restart');
       if (box) box.classList.remove('victory-mode');
       if (tag) {
-        tag.textContent = '💀 OPERAÇÃO LIQUIDADA 💀';
+        tag.innerHTML = `<img src="assets/ui/icon_skull.svg" class="inline-ui-art" alt=""> OPERAÇÃO LIQUIDADA <img src="assets/ui/icon_skull.svg" class="inline-ui-art" alt="">`;
         tag.classList.remove('victory-tag-style');
       }
       if (artWrap) artWrap.classList.add('hidden');
@@ -2015,7 +2080,7 @@ class GameState {
       const pill = document.createElement('span');
       pill.className = 'relic-pill';
       pill.title = `${r.name}: ${r.desc}`;
-      pill.innerHTML = `${r.icon} <span>${r.name}</span>`;
+      pill.innerHTML = `<img src="${r.art}" class="relic-pill-art" alt="${r.name}"> <span>${r.name}</span>`;
       pill.addEventListener('click', () => {
         this.speak(`${r.name}: ${r.desc}`);
       });
@@ -2048,7 +2113,8 @@ class GameState {
     const passiveBadge = document.getElementById('enemy-passive-badge');
     if (passiveBadge) {
       if (this.enemy.passiveText) {
-        passiveBadge.textContent = this.enemy.passiveText;
+        const iconHtml = this.enemy.passiveIcon ? `<img src="${this.enemy.passiveIcon}" class="inline-ui-art" alt="">` : '';
+        passiveBadge.innerHTML = `${iconHtml} <span>${this.enemy.passiveText}</span>`;
         passiveBadge.classList.toggle('phase2-enrage', !!this.enemy.phase2Triggered);
         passiveBadge.classList.remove('hidden');
       } else {
@@ -2068,13 +2134,16 @@ class GameState {
       enemyImg.style.display = 'block';
     } else if (enemyFallback) {
       if (enemyImg) enemyImg.style.display = 'none';
-      enemyFallback.textContent = this.enemy.avatar;
+      enemyFallback.innerHTML = `<img src="${this.enemy.avatar || 'assets/ui/icon_skull.svg'}" class="inline-ui-art" alt="">`;
       enemyFallback.style.display = 'block';
     }
 
     document.getElementById('enemy-hp-fill').style.width = `${(this.enemy.hp / this.enemy.maxHp) * 100}%`;
     document.getElementById('enemy-hp-text').textContent = `${this.enemy.hp} / ${this.enemy.maxHp}`;
-    document.getElementById('intent-icon').textContent = this.enemy.intent.icon;
+    const intentIconEl = document.getElementById('intent-icon');
+    if (intentIconEl) {
+      intentIconEl.innerHTML = `<img src="${this.enemy.intent.icon || 'assets/ui/icon_sword.svg'}" class="intent-art-icon" alt="">`;
+    }
     const intentDescEl = document.getElementById('intent-desc');
     if (intentDescEl) intentDescEl.textContent = this.enemy.intent.desc;
 
@@ -2158,8 +2227,8 @@ class GameState {
       cardEl.style.setProperty('--card-z', index + 1);
 
       const illustrationHtml = card.image
-        ? `<img src="${card.image}" class="card-art-img" alt="${card.name}" onerror="this.outerHTML='<span class=\\'card-art-fallback\\'>${card.icon}</span>'"/>`
-        : `<span class="card-art-fallback">${card.icon}</span>`;
+        ? `<img src="${card.image}" class="card-art-img" alt="${card.name}" onerror="this.src='${card.icon}'"/>`
+        : `<img src="${card.icon}" class="card-art-img" alt="${card.name}"/>`;
 
       const effectiveCost = (card.type === 'curse' && this.hasRelic('trituradora_vip')) ? 0 : card.cost;
       const tagLabel = card.type === 'blessing' ? 'Bênção' : card.type === 'fused' ? 'Fusão' : card.type === 'curse' ? 'Burocracia' : 'Ação';
@@ -2442,7 +2511,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const slide = unlocked[idx];
 
     if (comicHeaderTag) {
-      comicHeaderTag.textContent = `📖 MEMÓRIAS DE LOUIS (${idx + 1}/${unlocked.length})`;
+      comicHeaderTag.innerHTML = `<img src="assets/ui/icon_scroll.svg" class="inline-ui-art" alt=""> MEMÓRIAS DE LOUIS (${idx + 1}/${unlocked.length})`;
     }
 
     if (comicPanelContainer) {

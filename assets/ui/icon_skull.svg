@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M32 6 C17 6 10 16 10 29 C10 37 14 43 19 46 V55 H45 V46 C50 43 54 37 54 29 C54 16 47 6 32 6 Z" fill="#e8dec8" stroke="#120808" stroke-width="4"/>
+  <circle cx="23" cy="29" r="6" fill="#ff1e27" stroke="#120808" stroke-width="2.5"/>
+  <circle cx="41" cy="29" r="6" fill="#ff1e27" stroke="#120808" stroke-width="2.5"/>
+  <polygon points="32,34 28,42 36,42" fill="#120808"/>
+  <line x1="25" y1="48" x2="25" y2="55" stroke="#120808" stroke-width="3"/>
+  <line x1="32" y1="48" x2="32" y2="55" stroke="#120808" stroke-width="3"/>
+  <line x1="39" y1="48" x2="39" y2="55" stroke="#120808" stroke-width="3"/>
+</svg>

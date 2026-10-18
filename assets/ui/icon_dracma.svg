@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="goldGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fff3a8"/>
+      <stop offset="45%" stop-color="#ffd700"/>
+      <stop offset="85%" stop-color="#b87700"/>
+      <stop offset="100%" stop-color="#5c3800"/>
+    </radialGradient>
+  </defs>
+  <polygon points="32,3 53,12 61,32 53,52 32,61 11,52 3,32 11,12" fill="url(#goldGrad)" stroke="#120904" stroke-width="4"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#4a2c00" stroke-width="2.5" stroke-dasharray="6 3"/>
+  <path d="M32 14 L40 26 L35 26 L35 40 L42 40 L32 51 L22 40 L29 40 L29 26 L24 26 Z" fill="#fff099" stroke="#2a1500" stroke-width="2.5"/>
+</svg>
